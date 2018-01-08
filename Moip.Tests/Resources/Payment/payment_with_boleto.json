@@ -1,0 +1,16 @@
+﻿{
+  "fundingInstrument": {
+    "method": "BOLETO",
+    "creditCard": null,
+    "boleto": {
+      "expirationDate": "2020-09-30",
+      "instructionLines": {
+        "first": "TESTETETSTTTST",
+        "second": "tfcsddlksjsd",
+        "third": "lkshglashiuahgha"
+      },
+      "logoUri": "http://"
+    },
+    "onlineBankDebit": null
+  }
+}

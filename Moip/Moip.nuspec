@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Moip</id>
+    <version>1.0</version>
+    <title>Moip SDK</title>
+    <authors>Jair Bressani Junior</authors>
+    <owners>Moip</owners>
+    <projectUrl>https://github.com/moip/moip-sdk-dotnet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Moip SDK for .NET users.</description>
+    <releaseNotes>Moip .NET SDK first release.</releaseNotes>
+  </metadata>
+</package>

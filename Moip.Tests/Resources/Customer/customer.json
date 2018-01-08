@@ -1,0 +1,27 @@
+﻿{
+  "ownId": "OFulanoDeTal",
+  "fullname": "Fulano de Tal",
+  "email": "fulano@detal.com.br",
+  "birthDate": "1990-01-01",
+  "taxDocument": {
+    "type": "CPF",
+    "number": "33333333333"
+  },
+  "phone": {
+    "countryCode": "55",
+    "areaCode": "11",
+    "number": "66778899"
+  },
+  "shippingAddress": {
+    "street": "Rua test",
+    "streetNumber": "123",
+    "complement": "Ap test",
+    "district": "Bairro test",
+    "city": "TestCity",
+    "state": "SP",
+    "country": "BRA",
+    "zipCode": "01234000"
+  },
+  "fundingInstrument": null,
+  "id": null
+}

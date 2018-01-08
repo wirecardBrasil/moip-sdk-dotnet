@@ -1,0 +1,23 @@
+﻿{
+  "amount": null,
+  "refundingInstrument": {
+    "method": "BANK_ACCOUNT",
+    "bankAccount": {
+      "type": "CHECKING",
+      "bankNumber": "341",
+      "agencyNumber": "4444444",
+      "agencyCheckNumber": "2",
+      "accountNumber": "1234",
+      "accountCheckNumber": "1",
+      "holder": {
+        "fullname": "Fulano de Tal",
+        "birthdate": "1990-01-01",
+        "taxDocument": {
+          "type": "CPF",
+          "number": "22222222222"
+        },
+        "phone": null
+      }
+    }
+  }
+}

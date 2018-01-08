@@ -1,0 +1,11 @@
+﻿{
+  "fundingInstrument": {
+    "method": "ONLINE_BANK_DEBIT",
+    "creditCard": null,
+    "boleto": null,
+    "onlineBankDebit": {
+      "bankNumber": 341,
+      "expirationDate": "2020-09-30"
+    }
+  }
+}
