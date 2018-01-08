@@ -78,11 +78,15 @@
 
 ## Instalação
 
-TODO
+Execute o comando para instalar via NuGet:
 
 ```xml
-TODO
+dotnet add package Moip --version 1.0.1
 ```
+
+Package:
+
+https://www.nuget.org/packages/Moip/
 
 ## Configurando a autenticação
 
