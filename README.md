@@ -5,9 +5,7 @@
 
 **Índice**
 - [Instalação](#instalação)
-- [Configurando a autenticação](#configurando-a-autenticação)
-  - [Por OAuth](#autenticando)
-- [Configurando o ambiente](#configurando-o-ambiente)
+- [Autenticando e configurando o ambiente](#autenticando-e-configurando-o-ambiente)
 - [Exemplos de Uso](#clientes):
   - [Pedidos](#pedidos)
     - [Criação](#criação)
@@ -88,17 +86,10 @@ Package:
 
 https://www.nuget.org/packages/Moip/
 
-## Configurando a autenticação
-
-### Autenticando
+## Autenticando e configurando o ambiente
+Para gerar o client, informe seu token oAuth e em qual environment você quer executar suas ações:
 ```C#
-Client client = new Client("TOKEN_OAUTH");
-```
-
-## Configurando o ambiente
-Após definir o tipo de autenticação, é necessário gerar o client, informando em qual environment você quer executar suas ações:
-```C#
-Client client = new Client("d6bc80acbce6409b8b4cad5ceee62bc0_v2", Configuration.Environments.SANDBOX);
+Client client = new Client("TOKEN_OAUTH", Configuration.Environments.SANDBOX);
 ```
 
 ## Pedidos
@@ -263,14 +254,14 @@ Payment payment = client.Payments.CreateCreditCard("ORD-HPMZSOM611M2", paymentRe
 #### Boleto
 ```C#
 
-BoletoInstructionLines boletoInstructionLines = new BoletoInstructionLines()
+BoletoInstructionLines boletoInstructionLines = new BoletoInstructionLines
 {
     First("Primeira linha"),
     Second("Segunda linha"),
     Third("Terceira linha")
 };
 
-BoletoRequest boletoRequest = new BoletoRequest()
+BoletoRequest boletoRequest = new BoletoRequest
 {
     ExpirationDate = "2020-09-30",
     InstructionLines = boletoInstructionLines,
@@ -433,7 +424,7 @@ eventsList.Add("ORDER.*");
 eventsList.Add("PAYMENT.AUTHORIZED");
 eventsList.Add("PAYMENT.CANCELLED");
 
-NotificationPreferenceRequest notificationPreferenceRequest = new NotificationPreferenceRequest()
+NotificationPreferenceRequest notificationPreferenceRequest = new NotificationPreferenceRequest
 {
     Events = eventsList,
     Target = "http://requestb.in/1dhjesw1",
