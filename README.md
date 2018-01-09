@@ -459,7 +459,7 @@ List<NotificationPreferenceResponse> notificationPreferenceResponseList = client
 ### Pedido
 #### Cartão de Crédito
 ```C#
-tandard.Models.Phone phoneRequest = new Phone
+Phone phoneRequest = new Phone
 {
     CountryCode = "55",
     AreaCode = "11",
