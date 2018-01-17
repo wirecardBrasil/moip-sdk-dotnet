@@ -16,6 +16,7 @@ namespace Moip.Models
     {
         // These fields hold the values for the public properties.
         private string currency;
+        private Models.SubtotalsRequest subtotals;
 
         [JsonProperty("currency")]
         public string Currency
@@ -28,6 +29,20 @@ namespace Moip.Models
             {
                 this.currency = value;
                 onPropertyChanged("Currency");
+            }
+        }
+
+        [JsonProperty("subtotals")]
+        public Models.SubtotalsRequest Subtotals
+        {
+            get
+            {
+                return this.subtotals;
+            }
+            set
+            {
+                this.subtotals = value;
+                onPropertyChanged("Subtotals");
             }
         }
     }

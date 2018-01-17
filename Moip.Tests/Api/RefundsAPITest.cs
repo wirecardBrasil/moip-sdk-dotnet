@@ -31,7 +31,7 @@ namespace Moip.Tests
             Moip.Models.RefundCCResponse refundResponse = controller.CreatePayment(paymentId, refundRequest);
 
             Assert.NotNull(refundResponse.Id, "Id should not be null");
-            Assert.AreEqual(2000, refundResponse.Amount.Total, "Should match exactly (string literal match)");
+            Assert.AreEqual(3510, refundResponse.Amount.Total, "Should match exactly (string literal match)");
             Assert.AreEqual("FULL", refundResponse.Type, "Should match exactly (string literal match)");
             Assert.AreEqual("COMPLETED", refundResponse.Status, "Should match exactly (string literal match)");
             Assert.AreEqual("CREDIT_CARD", refundResponse.RefundingInstrument.Method, "Should match exactly (string literal match)");
@@ -81,7 +81,7 @@ namespace Moip.Tests
             Moip.Models.RefundCCResponse refundResponse = controller.CreateOrder(orderId, refundRequest);
 
             Assert.NotNull(refundResponse.Id, "Id should not be null");
-            Assert.AreEqual(2000, refundResponse.Amount.Total, "Should match exactly (string literal match)");
+            Assert.AreEqual(3510, refundResponse.Amount.Total, "Should match exactly (string literal match)");
             Assert.AreEqual("FULL", refundResponse.Type, "Should match exactly (string literal match)");
             Assert.AreEqual("COMPLETED", refundResponse.Status, "Should match exactly (string literal match)");
             Assert.AreEqual("CREDIT_CARD", refundResponse.RefundingInstrument.Method, "Should match exactly (string literal match)");
@@ -133,7 +133,7 @@ namespace Moip.Tests
             Moip.Models.RefundBankAccountResponse refundResponse = controller.CreatePaymentBankAccount(paymentId, refundRequest);
 
             Assert.NotNull(refundResponse.Id, "Id should not be null");
-            Assert.AreEqual(2000, refundResponse.Amount.Total, "Should match exactly (string literal match)");
+            Assert.AreEqual(3510, refundResponse.Amount.Total, "Should match exactly (string literal match)");
             Assert.AreEqual("FULL", refundResponse.Type, "Should match exactly (string literal match)");
             Assert.AreEqual("REQUESTED", refundResponse.Status, "Should match exactly (string literal match)");
             Assert.AreEqual("341", refundResponse.RefundingInstrument.BankAccount.BankNumber, "Should match exactly (string literal match)");
@@ -191,7 +191,7 @@ namespace Moip.Tests
             Moip.Models.RefundCCResponse refundResponse = controller.GetCCRefund(refundId);
 
             Assert.NotNull(refundResponse.Id, "Id should not be null");
-            Assert.AreEqual(2000, refundResponse.Amount.Total, "Should match exactly (string literal match)");
+            Assert.AreEqual(3510, refundResponse.Amount.Total, "Should match exactly (string literal match)");
             Assert.AreEqual("FULL", refundResponse.Type, "Should match exactly (string literal match)");
             Assert.AreEqual("COMPLETED", refundResponse.Status, "Should match exactly (string literal match)");
             Assert.AreEqual("CREDIT_CARD", refundResponse.RefundingInstrument.Method, "Should match exactly (string literal match)");

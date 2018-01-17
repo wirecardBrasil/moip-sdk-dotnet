@@ -132,9 +132,17 @@ CustomerRequest customerRequest = new CustomerRequest
     TaxDocument = taxDocument
 };
 
+SubtotalsRequest subtotalsRequest = new SubtotalsRequest
+{
+    Shipping = 1500,
+    Addition = 20,
+    Discount = 10
+};
+
 AmountOrderRequest amountRequest = new AmountOrderRequest
 {
     Currency = "BRL"
+    Subtotals = subtotalsRequest
 };
 
 Item itemsRequest = new Item

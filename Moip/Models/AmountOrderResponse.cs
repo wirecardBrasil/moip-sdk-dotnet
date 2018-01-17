@@ -22,7 +22,7 @@ namespace Moip.Models
         private int liquid;
         private int otherReceivers;
         private string currency;
-        private Models.Subtotals subtotals;
+        private Models.SubtotalsResponse subtotals;
 
         [JsonProperty("paid")]
         public int Paid
@@ -123,7 +123,7 @@ namespace Moip.Models
         }
 
         [JsonProperty("subtotals")]
-        public Models.Subtotals Subtotals
+        public Models.SubtotalsResponse Subtotals
         {
             get
             {
