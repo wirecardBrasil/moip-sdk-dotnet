@@ -22,7 +22,7 @@ namespace Moip.Tests
 
             Moip.Models.OrderRequest orderRequest = Helpers.RequestsCreator.createOrderRequest();
 
-            string orderRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(orderRequest);
+            string orderRequestJson = Moip.Utilities.APIHelper.JsonSerialize(orderRequest);
 
             string expectedOrderRequestJson = Helpers.FileReader.readJsonFile(@"Order\order.json");
 
@@ -36,7 +36,7 @@ namespace Moip.Tests
 
             Moip.Models.OrderRequest orderRequest = Helpers.RequestsCreator.createOrderWithReceiversRequest();
 
-            string orderRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(orderRequest);
+            string orderRequestJson = Moip.Utilities.APIHelper.JsonSerialize(orderRequest);
 
             string expectedOrderRequestJson = Helpers.FileReader.readJsonFile(@"Order\order_with_receivers.json");
 

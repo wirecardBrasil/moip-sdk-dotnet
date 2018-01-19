@@ -1,5 +1,4 @@
 ﻿{
-  "amount": null,
   "refundingInstrument": {
     "method": "BANK_ACCOUNT",
     "bankAccount": {
@@ -15,8 +14,7 @@
         "taxDocument": {
           "type": "CPF",
           "number": "22222222222"
-        },
-        "phone": null
+        }
       }
     }
   }

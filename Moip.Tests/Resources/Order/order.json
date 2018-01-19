@@ -34,10 +34,6 @@
       "state": "SP",
       "country": "BRA",
       "zipCode": "01234000"
-    },
-    "fundingInstrument": null,
-    "id": null
-  },
-  "receivers": null,
-  "checkoutPreferences": null
+    }
+  }
 }

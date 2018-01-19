@@ -22,7 +22,7 @@ namespace Moip.Tests
 
             Moip.Models.PaymentRequest paymentRequest = Helpers.RequestsCreator.CreatePaymentWithCCRequest();
 
-            string paymentRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(paymentRequest);
+            string paymentRequestJson = Moip.Utilities.APIHelper.JsonSerialize(paymentRequest);
 
             string expectedPaymentRequestJson = Helpers.FileReader.readJsonFile(@"Payment\payment_with_credit_card.json");
 
@@ -36,7 +36,7 @@ namespace Moip.Tests
 
             Moip.Models.PaymentBoletoOrDebitRequest paymentRequest = Helpers.RequestsCreator.CreatePaymentWithBoletoRequest();
 
-            string paymentRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(paymentRequest);
+            string paymentRequestJson = Moip.Utilities.APIHelper.JsonSerialize(paymentRequest);
 
             string expectedPaymentRequestJson = Helpers.FileReader.readJsonFile(@"Payment\payment_with_boleto.json");
 
@@ -50,7 +50,7 @@ namespace Moip.Tests
 
             Moip.Models.PaymentBoletoOrDebitRequest paymentRequest = Helpers.RequestsCreator.CreatePaymentWithOnlineDebitRequest();
 
-            string paymentRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(paymentRequest);
+            string paymentRequestJson = Moip.Utilities.APIHelper.JsonSerialize(paymentRequest);
 
             string expectedPaymentRequestJson = Helpers.FileReader.readJsonFile(@"Payment\payment_with_online_debit.json");
 
@@ -64,7 +64,7 @@ namespace Moip.Tests
 
             Moip.Models.PaymentRequest paymentRequest = Helpers.RequestsCreator.CreatePaymentWithPreAuthorizationRequest();
 
-            string paymentRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(paymentRequest);
+            string paymentRequestJson = Moip.Utilities.APIHelper.JsonSerialize(paymentRequest);
 
             string expectedPaymentRequestJson = Helpers.FileReader.readJsonFile(@"Payment\payment_with_pre_authorization.json");
 

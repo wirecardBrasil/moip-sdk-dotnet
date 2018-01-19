@@ -22,7 +22,7 @@ namespace Moip.Tests
 
             Moip.Models.NotificationPreferenceRequest notificationRequest = Helpers.RequestsCreator.CreateNotificationRequest();
 
-            string notificationRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(notificationRequest);
+            string notificationRequestJson = Moip.Utilities.APIHelper.JsonSerialize(notificationRequest);
 
             string expectedNotificationRequestJson = Helpers.FileReader.readJsonFile(@"Notification\notification.json");
 

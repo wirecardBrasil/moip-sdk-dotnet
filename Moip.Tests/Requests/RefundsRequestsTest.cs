@@ -22,7 +22,7 @@ namespace Moip.Tests
 
             Moip.Models.RefundCCRequest refundRequest = Helpers.RequestsCreator.CreateFullCCRefundRequest();
 
-            string refundRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(refundRequest);
+            string refundRequestJson = Moip.Utilities.APIHelper.JsonSerialize(refundRequest);
 
             string expectedRefundRequestJson = Helpers.FileReader.readJsonFile(@"Refund\payment_full_cc.json");
 
@@ -37,7 +37,7 @@ namespace Moip.Tests
 
             Moip.Models.RefundCCRequest refundRequest = Helpers.RequestsCreator.CreatePartialCCRefundRequest();
 
-            string refundRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(refundRequest);
+            string refundRequestJson = Moip.Utilities.APIHelper.JsonSerialize(refundRequest);
 
             string expectedRefundRequestJson = Helpers.FileReader.readJsonFile(@"Refund\payment_partial_cc.json");
 
@@ -52,7 +52,7 @@ namespace Moip.Tests
 
             Moip.Models.RefundBankAccountRequest refundRequest = Helpers.RequestsCreator.CreateFullBankAccountRefundRequest();
 
-            string refundRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(refundRequest);
+            string refundRequestJson = Moip.Utilities.APIHelper.JsonSerialize(refundRequest);
 
             string expectedRefundRequestJson = Helpers.FileReader.readJsonFile(@"Refund\payment_full_bankAccount.json");
 
@@ -66,7 +66,7 @@ namespace Moip.Tests
         {
             Moip.Models.RefundBankAccountRequest refundRequest = Helpers.RequestsCreator.CreatePartialBankAccountRefundRequest();
 
-            string refundRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(refundRequest);
+            string refundRequestJson = Moip.Utilities.APIHelper.JsonSerialize(refundRequest);
 
             string expectedRefundRequestJson = Helpers.FileReader.readJsonFile(@"Refund\payment_partial_bankAccount.json");
 
