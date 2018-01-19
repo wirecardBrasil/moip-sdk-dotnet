@@ -14,11 +14,6 @@ namespace Moip.Tests.Helpers
 {
     static class TestHelper
     {
-        
-        
-        
-        
-        
         internal static string ConvertStreamToString(Stream inStream)
         {
             using (StreamReader reader = new StreamReader(inStream))
@@ -35,7 +30,7 @@ namespace Moip.Tests.Helpers
         {
             foreach (var property in leftTree.Properties())
             {
-                
+
                 if (rightTree.Property(property.Name) == null)
                     return false;
 
@@ -62,7 +57,7 @@ namespace Moip.Tests.Helpers
                 }
                 else
                 {
-                    
+
                     if (checkValues)
                     {
                         // If left value is a primitive, check if it equals right value
@@ -110,7 +105,7 @@ namespace Moip.Tests.Helpers
             string leftObject, string rightObject,
             bool checkValues, bool allowExtra, bool isOrdered)
         {
-            
+
             JArray left = APIHelper.JsonDeserialize<dynamic>(leftObject);
             JArray right = APIHelper.JsonDeserialize<dynamic>(rightObject);
 
@@ -122,7 +117,7 @@ namespace Moip.Tests.Helpers
                 JArray rightList,
                 bool checkValues, bool allowExtra, bool isOrdered)
         {
-            
+
             if ((!allowExtra) && (rightList.Count != leftList.Count))
                 return false;
 
@@ -156,7 +151,7 @@ namespace Moip.Tests.Helpers
         public static bool IsListProperSubsetOf(string leftListJson, string rightListJson,
                 bool allowExtra, bool isOrdered)
         {
-            
+
             JArray left = APIHelper.JsonDeserialize<dynamic>(leftListJson);
             JArray right = APIHelper.JsonDeserialize<dynamic>(rightListJson);
 
@@ -347,11 +342,6 @@ namespace Moip.Tests.Helpers
             }
 
             return true;
-        }
-
-        public static string getJsonFileAsJsonObject(String file)
-        {
-            return "";
         }
 
         public static void AuthorizePayment(string paymentId, int amount)
