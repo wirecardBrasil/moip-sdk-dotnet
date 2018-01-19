@@ -8,7 +8,6 @@ namespace Moip
 {
     public partial class Client
     {
-
         public NotificationsController Notifications
         {
             get
@@ -48,9 +47,17 @@ namespace Moip
                 return OrdersController.Instance;
             }
         }
-        
-        
-        
+
+        public AccountsController Accounts
+        {
+            get
+            {
+                return AccountsController.Instance;
+            }
+        }
+
+
+
         public IHttpClient SharedHttpClient
         {
             get
@@ -63,9 +70,9 @@ namespace Moip
             }
         }
         #region Constructors
-        
-        
-        
+
+
+
         public Client() { }
 
         public Client(string oAuthAccessToken, Environments environment)
