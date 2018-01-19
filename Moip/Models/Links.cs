@@ -90,5 +90,9 @@ namespace Moip.Models
                 onPropertyChanged("Payment");
             }
         }
+
+        [JsonProperty("setPassword")]
+        public Self SetPassword { get; set; }
+
     }
 }
