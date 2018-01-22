@@ -11,6 +11,9 @@ namespace Moip.Models
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        [JsonProperty("accessToken")]
+        public string AccessToken { get; set; }
+
         [JsonProperty("channelId")]
         public string ChannelId { get; set; }
 

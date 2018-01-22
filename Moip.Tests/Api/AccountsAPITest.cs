@@ -46,10 +46,10 @@ namespace Moip.Tests
         public void TestCreateAccountTransparent()
         {
             Moip.Models.AccountRequest accountRequest = Helpers.RequestsCreator.CreateAccountTransparentRequest();
-//
             Moip.Models.AccountResponse accountResponse = controller.CreateAccount(accountRequest);
 
             Assert.NotNull(accountResponse.Id, "Id should not be null");
+            Assert.NotNull(accountResponse.AccessToken, "Access token should not be null");
             Assert.IsTrue(accountResponse.TransparentAccount, "Transparent should be true");
         }
 
