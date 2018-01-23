@@ -707,7 +707,65 @@ TODO
 ## Conta Moip
 ### Criação
 ```C#
-TODO
+EmailRequest emailRequest = new EmailRequest
+{
+    Address = "testingarandomemail10@labs.moip.com.br"
+};
+
+TaxDocument taxDocumentRequest = new TaxDocument
+{
+    Type = "CPF",
+    Number = "736.141.550-48"
+};
+
+IdentityDocumentRequest identityDocumentRequest = new IdentityDocumentRequest
+{
+    Type = "RG",
+    Number = "434322344",
+    Issuer = "SSP",
+    IssueDate = "2000-12-12"
+};
+
+Phone phoneRequest = new Phone
+{
+    CountryCode = "55",
+    AreaCode = "11",
+    Number = "712341234"
+};
+
+ShippingAddress shippingAddressRequest = new ShippingAddress
+{
+    Street = "Av. Brigadeiro Faria Lima",
+    StreetNumber = "2927",
+    District = "Itaim",
+    ZipCode = "01234-000",
+    City = "São Paulo",
+    State = "SP",
+    Country = "BRA"
+};
+
+Person personRequest = new Person
+{
+    Name = "Runscope",
+    LastName = "Goku",
+    TaxDocument = taxDocumentRequest,
+    IdentityDocument = identityDocumentRequest,
+    BirthDate = "1990-01-01",
+    Phone = phoneRequest,
+    Address = shippingAddressRequest,
+};
+
+AccountRequest accountRequest = new AccountRequest
+{
+    Email = emailRequest,
+    Person = personRequest,
+    Type = "MERCHANT",
+
+    // Caso queira criar conta transparente, basta mudar esse atributo para true
+    TransparentAccount = false
+};
+
+AccountResponse accountResponse = client.Accounts.CreateAccount(accountRequest);
 ```
 
 ### Consulta

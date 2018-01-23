@@ -1,0 +1,37 @@
+﻿{
+  "email": {
+    "address": "testingarandomemail10@labs.moip.com.br"
+  },
+  "person": {
+    "name": "Runscope",
+    "lastName": "Goku",
+    "taxDocument": {
+      "type": "CPF",
+      "number": "736.141.550-48"
+    },
+    "identityDocument": {
+      "type": "RG",
+      "number": "434322344",
+      "issuer": "SSP",
+      "issueDate": "2000-12-12"
+    },
+    "birthDate": "1990-01-01",
+    "phone": {
+      "countryCode": "55",
+      "areaCode": "11",
+      "number": "712341234"
+    },
+    "alternativePhones": [],
+    "address": {
+      "street": "Av. Brigadeiro Faria Lima",
+      "streetNumber": "2927",
+      "district": "Itaim",
+      "city": "São Paulo",
+      "state": "SP",
+      "country": "BRA",
+      "zipCode": "01234-000"
+    }
+  },
+  "type": "MERCHANT",
+  "transparentAccount": false,
+}

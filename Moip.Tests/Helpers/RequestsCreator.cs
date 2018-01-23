@@ -772,5 +772,238 @@ namespace Moip.Tests.Helpers
             return customerCreditCardRequest;
         }
 
+
+        public static Moip.Models.AccountRequest CreateAccountPersonRequest()
+        {
+
+            Moip.Models.EmailRequest emailRequest = new Models.EmailRequest
+            {
+                Address = "testingarandomemail10@labs.moip.com.br"
+            };
+
+            Moip.Models.TaxDocument taxDocumentRequest = new Models.TaxDocument
+            {
+                Type = "CPF",
+                Number = "736.141.550-48"
+            };
+
+            Moip.Models.IdentityDocumentRequest identityDocumentRequest = new Models.IdentityDocumentRequest
+            {
+                Type = "RG",
+                Number = "434322344",
+                Issuer = "SSP",
+                IssueDate = "2000-12-12"
+            };
+
+            Moip.Models.Phone phoneRequest = new Models.Phone
+            {
+                CountryCode = "55",
+                AreaCode = "11",
+                Number = "712341234"
+            };
+
+            Moip.Models.ShippingAddress shippingAddressRequest = new Models.ShippingAddress
+            {
+                Street = "Av. Brigadeiro Faria Lima",
+                StreetNumber = "2927",
+                District = "Itaim",
+                ZipCode = "01234-000",
+                City = "São Paulo",
+                State = "SP",
+                Country = "BRA"
+            };
+
+            Moip.Models.Person personRequest = new Models.Person
+            {
+                Name = "Runscope",
+                LastName = "Goku",
+                TaxDocument = taxDocumentRequest,
+                IdentityDocument = identityDocumentRequest,
+                BirthDate = "1990-01-01",
+                Phone = phoneRequest,
+                Address = shippingAddressRequest,
+            };
+
+            Moip.Models.AccountRequest accountRequest = new Moip.Models.AccountRequest
+            {
+                Email = emailRequest,
+                Person = personRequest,
+                Type = "MERCHANT"
+            };
+
+            return accountRequest;
+        }
+
+        public static Moip.Models.AccountRequest CreateAccountCompanyRequest()
+        {
+            Moip.Models.EmailRequest emailRequest = new Models.EmailRequest
+            {
+                Address = "dev.moip@labs.moip.com.br"
+            };
+
+            Moip.Models.TaxDocument personTaxDocumentRequest = new Models.TaxDocument
+            {
+                Type = "CPF",
+                Number = "123.456.798-91"
+            };
+
+            Moip.Models.IdentityDocumentRequest identityDocumentRequest = new Models.IdentityDocumentRequest
+            {
+                Type = "RG",
+                Number = "434322344",
+                Issuer = "SSP",
+                IssueDate = "2000-12-12"
+            };
+
+            Moip.Models.Phone personPhoneRequest = new Models.Phone
+            {
+                CountryCode = "55",
+                AreaCode = "11",
+                Number = "712341234"
+            };
+
+            Moip.Models.ShippingAddress shippingAddressRequest = new Models.ShippingAddress
+            {
+                Street = "Av. Brigadeiro Faria Lima",
+                StreetNumber = "2927",
+                District = "Itaim",
+                ZipCode = "01234-000",
+                City = "São Paulo",
+                State = "SP",
+                Country = "BRA"
+            };
+
+            Moip.Models.Person personRequest = new Models.Person
+            {
+                Name = "Runscope",
+                LastName = "Goku",
+                TaxDocument = personTaxDocumentRequest,
+                IdentityDocument = identityDocumentRequest,
+                BirthDate = "1990-01-01",
+                Phone = personPhoneRequest,
+                Address = shippingAddressRequest,
+            };
+
+            Moip.Models.TaxDocument companyTaxDocumentRequest = new Models.TaxDocument
+            {
+                Type = "CNPJ",
+                Number = "11.698.147/0001-13"
+            };
+
+            Moip.Models.MainActivityRequest mainActivityRequest = new Models.MainActivityRequest
+            {
+                Cnae = "82.91-1/00",
+                Description = "Atividades de cobranças e informações cadastrais"
+            };
+
+            Moip.Models.Phone companyPhoneRequest = new Models.Phone
+            {
+                CountryCode = "55",
+                AreaCode = "11",
+                Number = "32234455"
+            };
+
+            Moip.Models.ShippingAddress companyAddressRequest = new Models.ShippingAddress
+            {
+                Street = "Av. Brigadeiro Faria Lima",
+                StreetNumber = "2927",
+                District = "Itaim",
+                ZipCode = "01234-000",
+                City = "São Paulo",
+                State = "SP",
+                Country = "BRA"
+            };
+
+            Moip.Models.CompanyRequest companyRequest = new Models.CompanyRequest
+            {
+                Name = "Empresa Moip",
+                BusinessName = "Moip Pagamentos",
+                OpeningDate = "2011-01-01",
+                TaxDocument = companyTaxDocumentRequest,
+                MainActivity = mainActivityRequest,
+                Phone = companyPhoneRequest,
+                Address = companyAddressRequest
+
+            };
+
+            Moip.Models.BusinessSegmentRequest businessSegmentRequest = new Moip.Models.BusinessSegmentRequest
+            {
+                Id = 3
+            };
+
+            Moip.Models.AccountRequest accountRequest = new Moip.Models.AccountRequest
+            {
+                Email = emailRequest,
+                Person = personRequest,
+                Company = companyRequest,
+                BusinessSegment = businessSegmentRequest,
+                Type = "MERCHANT"
+            };
+
+            return accountRequest;
+        }
+
+        public static Moip.Models.AccountRequest CreateAccountTransparentRequest()
+        {
+
+            Moip.Models.EmailRequest emailRequest = new Models.EmailRequest
+            {
+                Address = "testingarandomemail10@labs.moip.com.br"
+            };
+
+            Moip.Models.TaxDocument taxDocumentRequest = new Models.TaxDocument
+            {
+                Type = "CPF",
+                Number = "736.141.550-48"
+            };
+
+            Moip.Models.IdentityDocumentRequest identityDocumentRequest = new Models.IdentityDocumentRequest
+            {
+                Type = "RG",
+                Number = "434322344",
+                Issuer = "SSP",
+                IssueDate = "2000-12-12"
+            };
+
+            Moip.Models.Phone phoneRequest = new Models.Phone
+            {
+                CountryCode = "55",
+                AreaCode = "11",
+                Number = "712341234"
+            };
+
+            Moip.Models.ShippingAddress shippingAddressRequest = new Models.ShippingAddress
+            {
+                Street = "Av. Brigadeiro Faria Lima",
+                StreetNumber = "2927",
+                District = "Itaim",
+                ZipCode = "01234-000",
+                City = "São Paulo",
+                State = "SP",
+                Country = "BRA"
+            };
+
+            Moip.Models.Person personRequest = new Models.Person
+            {
+                Name = "Runscope",
+                LastName = "Goku",
+                TaxDocument = taxDocumentRequest,
+                IdentityDocument = identityDocumentRequest,
+                BirthDate = "1990-01-01",
+                Phone = phoneRequest,
+                Address = shippingAddressRequest,
+            };
+
+            Moip.Models.AccountRequest accountRequest = new Moip.Models.AccountRequest
+            {
+                Email = emailRequest,
+                Person = personRequest,
+                Type = "MERCHANT",
+                TransparentAccount = true
+            };
+
+            return accountRequest;
+        }
+
     }
 }
