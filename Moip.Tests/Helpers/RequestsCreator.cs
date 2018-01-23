@@ -46,9 +46,18 @@ namespace Moip.Tests.Helpers
                 TaxDocument = taxDocument
             };
 
+            Moip.Models.SubtotalsRequest subtotalsRequest = new Moip.Models.SubtotalsRequest
+            {
+                Shipping = 1500,
+                Addition = 20,
+                Discount = 10
+            };
+
+
             Moip.Models.AmountOrderRequest amountRequest = new Moip.Models.AmountOrderRequest
             {
-                Currency = "BRL"
+                Currency = "BRL",
+                Subtotals = subtotalsRequest
             };
 
             Moip.Models.Item itemsRequest = new Moip.Models.Item
@@ -113,9 +122,18 @@ namespace Moip.Tests.Helpers
                 TaxDocument = taxDocument
             };
 
+
+            Moip.Models.SubtotalsRequest subtotalsRequest = new Moip.Models.SubtotalsRequest
+            {
+                Shipping = 1500,
+                Addition = 20,
+                Discount = 10
+            };
+
             Moip.Models.AmountOrderRequest amountRequest = new Moip.Models.AmountOrderRequest
             {
-                Currency = "BRL"
+                Currency = "BRL",
+                Subtotals = subtotalsRequest
             };
 
             Moip.Models.Item itemsRequest = new Moip.Models.Item

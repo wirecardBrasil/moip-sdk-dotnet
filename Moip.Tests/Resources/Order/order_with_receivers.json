@@ -1,7 +1,12 @@
 ﻿{
   "ownId": "my_own_id",
   "amount": {
-    "currency": "BRL"
+    "currency": "BRL",
+    "subtotals": {
+      "shipping": 1500,
+      "addition": 20,
+      "discount": 10
+    }
   },
   "items": [
     {

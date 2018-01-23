@@ -12,7 +12,7 @@ using Moip.Utilities;
 
 namespace Moip.Models
 {
-    public class Subtotals : BaseModel
+    public class SubtotalsResponse : BaseModel
     {
         // These fields hold the values for the public properties.
         private int shipping;

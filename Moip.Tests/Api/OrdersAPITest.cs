@@ -47,6 +47,9 @@ namespace Moip.Tests
             Assert.AreEqual("66778899", orderResponse.Customer.Phone.Number, "Should match exactly (string literal match)");
             Assert.AreEqual("CPF", orderResponse.Customer.TaxDocument.Type, "Should match exactly (string literal match)");
             Assert.AreEqual("22222222222", orderResponse.Customer.TaxDocument.Number, "Should match exactly (string literal match)");
+            Assert.AreEqual(1500, orderResponse.Amount.Subtotals.Shipping, "Should match exactly (string literal match)");
+            Assert.AreEqual(20, orderResponse.Amount.Subtotals.Addition, "Should match exactly (string literal match)");
+            Assert.AreEqual(10, orderResponse.Amount.Subtotals.Discount, "Should match exactly (string literal match)");
         }
 
         [Test]
@@ -86,6 +89,9 @@ namespace Moip.Tests
             Assert.AreEqual("66778899", orderResponse.Customer.Phone.Number, "Should match exactly (string literal match)");
             Assert.AreEqual("CPF", orderResponse.Customer.TaxDocument.Type, "Should match exactly (string literal match)");
             Assert.AreEqual("22222222222", orderResponse.Customer.TaxDocument.Number, "Should match exactly (string literal match)");
+            Assert.AreEqual(1500, orderResponse.Amount.Subtotals.Shipping, "Should match exactly (string literal match)");
+            Assert.AreEqual(20, orderResponse.Amount.Subtotals.Addition, "Should match exactly (string literal match)");
+            Assert.AreEqual(10, orderResponse.Amount.Subtotals.Discount, "Should match exactly (string literal match)");
         }
 
         [Test]
@@ -127,6 +133,9 @@ namespace Moip.Tests
             Assert.AreEqual("66778899", orderResponse.Customer.Phone.Number, "Should match exactly (string literal match)");
             Assert.AreEqual("CPF", orderResponse.Customer.TaxDocument.Type, "Should match exactly (string literal match)");
             Assert.AreEqual("22222222222", orderResponse.Customer.TaxDocument.Number, "Should match exactly (string literal match)");
+            Assert.AreEqual(1500, orderResponse.Amount.Subtotals.Shipping, "Should match exactly (string literal match)");
+            Assert.AreEqual(20, orderResponse.Amount.Subtotals.Addition, "Should match exactly (string literal match)");
+            Assert.AreEqual(10, orderResponse.Amount.Subtotals.Discount, "Should match exactly (string literal match)");
         }
 
         [Test]
