@@ -1,5 +1,4 @@
 ﻿{
-  "amount": null,
   "refundingInstrument": {
     "method": "CREDIT_CARD",
     "creditCard": {
@@ -19,9 +18,7 @@
           "areaCode": "11",
           "number": "66778899"
         }
-      },
-      "hash": null,
-      "store": null
+      }
     }
   }
 }

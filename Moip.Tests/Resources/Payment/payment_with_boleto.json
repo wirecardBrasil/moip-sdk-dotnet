@@ -1,7 +1,6 @@
 ﻿{
   "fundingInstrument": {
     "method": "BOLETO",
-    "creditCard": null,
     "boleto": {
       "expirationDate": "2020-09-30",
       "instructionLines": {
@@ -10,7 +9,6 @@
         "third": "lkshglashiuahgha"
       },
       "logoUri": "http://"
-    },
-    "onlineBankDebit": null
+    }
   }
 }

@@ -18,14 +18,28 @@ namespace Moip.Utilities
     {
         public static string DateTimeFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.FFFFFFFK";
 
-        public static string JsonSerialize(object obj, JsonConverter converter = null)
+        public static string JsonSerialize(object obj, JsonSerializerSettings settings = null)
         {
             if (null == obj)
                 return null;
-            if (converter == null)
-                return JsonConvert.SerializeObject(obj, Formatting.None, new IsoDateTimeConverter());
+            if (settings == null)
+            {
+                settings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                };
+                return JsonConvert.SerializeObject(obj, Formatting.None, settings);
+            }
             else
-                return JsonConvert.SerializeObject(obj, Formatting.None, converter);
+                return JsonConvert.SerializeObject(obj, Formatting.None, settings);
+        }
+
+        public static string JsonSerialize(object obj, JsonConverter converter)
+        {
+            if (null == obj)
+                return null;
+
+            return JsonConvert.SerializeObject(obj, Formatting.None, converter);
         }
 
         public static T JsonDeserialize<T>(string json, JsonConverter converter = null)

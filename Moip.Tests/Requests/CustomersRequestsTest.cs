@@ -15,7 +15,7 @@ namespace Moip.Tests
 
             Moip.Models.CustomerRequest generatedCustomerRequest = Helpers.RequestsCreator.CreateCustomerRequest(date);
 
-            string generatedCustomerRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(generatedCustomerRequest);
+            string generatedCustomerRequestJson = Moip.Utilities.APIHelper.JsonSerialize(generatedCustomerRequest);
 
             string expectedCustomerJson = Helpers.FileReader.readJsonFile(@"Customer\customer.json");
 
@@ -23,7 +23,7 @@ namespace Moip.Tests
 
             expectedCustomerRequest.OwnId += date;
 
-            string expectedCustomerRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(expectedCustomerRequest);
+            string expectedCustomerRequestJson = Moip.Utilities.APIHelper.JsonSerialize(expectedCustomerRequest);
 
             Assert.AreEqual(expectedCustomerRequestJson, generatedCustomerRequestJson,
                 "Notification request body should match exactly (string literal match)");
@@ -37,7 +37,7 @@ namespace Moip.Tests
 
             Moip.Models.CustomerRequest generatedCustomerRequest = Helpers.RequestsCreator.CreateCustomerWithFundingInstrumentRequest(date);
 
-            string generatedCustomerRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(generatedCustomerRequest);
+            string generatedCustomerRequestJson = Moip.Utilities.APIHelper.JsonSerialize(generatedCustomerRequest);
 
             string expectedCustomerJson = Helpers.FileReader.readJsonFile(@"Customer\customer_with_funding_instrument.json");
 
@@ -45,7 +45,7 @@ namespace Moip.Tests
 
             expectedCustomerRequest.OwnId += date;
 
-            string expectedCustomerRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(expectedCustomerRequest);
+            string expectedCustomerRequestJson = Moip.Utilities.APIHelper.JsonSerialize(expectedCustomerRequest);
 
             Assert.AreEqual(expectedCustomerRequestJson, generatedCustomerRequestJson,
                 "Notification request body should match exactly (string literal match)");
@@ -57,7 +57,7 @@ namespace Moip.Tests
         {
             Moip.Models.CustomerCreditCardRequest customerCreditCardRequest = Helpers.RequestsCreator.CreateCustomerCreditCardRequest();
 
-            string customerCreditCardRequestJson = Newtonsoft.Json.JsonConvert.SerializeObject(customerCreditCardRequest);
+            string customerCreditCardRequestJson = Moip.Utilities.APIHelper.JsonSerialize(customerCreditCardRequest);
 
             string expectedCustomerCreditCardRequestJson = Helpers.FileReader.readJsonFile(@"Customer\add_credit_card.json");
 
