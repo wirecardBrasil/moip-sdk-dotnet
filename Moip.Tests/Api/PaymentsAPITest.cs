@@ -153,5 +153,21 @@ namespace Moip.Tests
 
         }
 
+        [Test]
+        public void TestReleasePaymentWithEscrow()
+        {
+            Moip.Models.PaymentRequest paymentRequest = Helpers.RequestsCreator.CreatePaymentWithEscrowRequest();
+
+            Moip.Models.PaymentResponse paymentResponse = controller.CreateCreditCard(GetClient().Orders.CreateOrder(Helpers.RequestsCreator.createOrderRequest()).Id, paymentRequest);
+
+            Moip.Models.EscrowResponse escrowResponse = controller.ReleaseEscrow(paymentResponse.Escrows[0].Id);
+
+            Assert.NotNull(paymentResponse.Id, "Id should not be null");
+            Assert.AreEqual("RELEASED", escrowResponse.Status, "Should match exactly (string literal match)");
+            Assert.AreEqual("Escrow test", escrowResponse.Description, "Should match exactly (string literal match)");
+            Assert.AreEqual(3510, escrowResponse.Amount, "Should match exactly (string literal match)");
+            
+        }
+
     }
 }

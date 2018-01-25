@@ -887,7 +887,7 @@ PaymentResponse paymentResponse = client.Payments.CreateCreditCard("ORD-3435DIB5
 
 ### Liberação de custódia
 ```C#
-TODO
+EscrowResponse escrowResponse = client.Payments.ReleaseEscrow('ECW-9OS6FAPR3FD5')
 ```
 
 ## OAuth (Moip Connect)

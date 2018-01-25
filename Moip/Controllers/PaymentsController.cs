@@ -247,5 +247,50 @@ namespace Moip.Controllers
             }
         }
 
+        public Models.EscrowResponse ReleaseEscrow(string escrowId)
+        {
+            Task<Models.EscrowResponse> t = ReleaseEscrowAsync(escrowId);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        public async Task<Models.EscrowResponse> ReleaseEscrowAsync(string escrowId)
+        {
+
+            string _baseUri = Configuration.GetBaseURI();
+
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/escrows/{escrow-id}/release");
+
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "escrow-id", escrowId }
+            });
+
+            dynamic body = "";
+
+            var _body = APIHelper.JsonSerialize(body);
+
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            var _headers = Utilities.APIHelper.GetHeader();
+
+            HttpRequest _request = ClientInstance.PostBody(_queryUrl, _headers, _body);
+
+            HttpStringResponse _response = (HttpStringResponse)await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request, _response);
+
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return APIHelper.JsonDeserialize<Models.EscrowResponse>(_response.Body);
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
     }
 }
