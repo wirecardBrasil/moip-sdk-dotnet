@@ -1005,5 +1005,157 @@ namespace Moip.Tests.Helpers
             return accountRequest;
         }
 
+        public static Moip.Models.MultiorderRequest CreateMultiorderRequest()
+        {
+            Moip.Models.TaxDocument taxDocument = new Moip.Models.TaxDocument
+            {
+                Type = "CPF",
+                Number = "22222222222"
+            };
+
+            Moip.Models.Phone phone = new Moip.Models.Phone
+            {
+                CountryCode = "55",
+                AreaCode = "11",
+                Number = "66778899"
+            };
+
+            Moip.Models.ShippingAddress shippingAddress = new Moip.Models.ShippingAddress
+            {
+                Street = "Rua test",
+                StreetNumber = "123",
+                Complement = "Ap test",
+                District = "Bairro test",
+                City = "TestCity",
+                State = "SP",
+                Country = "BRA",
+                ZipCode = "01234000"
+            };
+
+            Moip.Models.CustomerRequest customerRequest = new Moip.Models.CustomerRequest
+            {
+                Fullname = "Fulano de Tal",
+                OwnId = "OFulanoDeTal",
+                BirthDate = "1990-01-01",
+                Email = "fulano@detal.com.br",
+                Phone = phone,
+                ShippingAddress = shippingAddress,
+                TaxDocument = taxDocument
+            };
+
+
+            Moip.Models.SubtotalsRequest subtotalsRequest = new Moip.Models.SubtotalsRequest
+            {
+                Shipping = 1500,
+                Addition = 20,
+                Discount = 10
+            };
+
+            Moip.Models.AmountOrderRequest amountRequest = new Moip.Models.AmountOrderRequest
+            {
+                Currency = "BRL",
+                Subtotals = subtotalsRequest
+            };
+
+            Moip.Models.Item itemsRequest = new Moip.Models.Item
+            {
+                Product = "Bicicleta Specialized Tarmac 26 Shimano Alivio",
+                Quantity = 1,
+                Detail = "uma linda bicicleta",
+                Price = 2000
+            };
+
+            List<Moip.Models.Item> itemsRequestList = new List<Moip.Models.Item>
+            {
+                itemsRequest
+            };
+
+            Moip.Models.MoipAccountReceiverRequest moipAccountReceiver1 = new Moip.Models.MoipAccountReceiverRequest
+            {
+                Id = "MPA-14AC21F09CAE"
+            };
+
+            Moip.Models.AmountReceiverRequest amountReceiver1 = new Moip.Models.AmountReceiverRequest
+            {
+                Percentual = 50
+            };
+
+            Moip.Models.ReceiverRequest receiver1 = new Moip.Models.ReceiverRequest
+            {
+                MoipAccount = moipAccountReceiver1,
+                Type = "PRIMARY",
+                Amount = amountReceiver1
+            };
+
+            Moip.Models.MoipAccountReceiverRequest moipAccountReceiver2 = new Moip.Models.MoipAccountReceiverRequest
+            {
+                Id = "MPA-B0D880F21EF1"
+            };
+
+            Moip.Models.AmountReceiverRequest amountReceiver2 = new Moip.Models.AmountReceiverRequest
+            {
+                Percentual = 50
+            };
+
+            Moip.Models.ReceiverRequest receiver2 = new Moip.Models.ReceiverRequest
+            {
+                MoipAccount = moipAccountReceiver2,
+                Type = "SECONDARY",
+                Amount = amountReceiver2
+            };
+
+            List<Moip.Models.ReceiverRequest> receiverList = new List<Moip.Models.ReceiverRequest>
+            {
+                receiver1,
+                receiver2
+            };
+
+            Moip.Models.OrderRequest orderRequest1 = new Moip.Models.OrderRequest
+            {
+                OwnId = "my_own_id",
+                Amount = amountRequest,
+                Items = itemsRequestList,
+                Customer = customerRequest,
+                Receivers = receiverList
+            };
+
+            Moip.Models.CustomerRequest customerRequest2 = new Moip.Models.CustomerRequest
+            {
+                Fullname = "Outro Nome Teste",
+                OwnId = "OFulanoDeTal",
+                BirthDate = "1990-01-01",
+                Email = "fulano@detal.com.br",
+                Phone = phone,
+                ShippingAddress = shippingAddress,
+                TaxDocument = taxDocument
+            };
+
+            Moip.Models.OrderRequest orderRequest2 = new Moip.Models.OrderRequest
+            {
+                OwnId = "my_own_id2",
+                Amount = amountRequest,
+                Items = itemsRequestList,
+                Customer = customerRequest2,
+                Receivers = receiverList
+            };
+
+            List<Moip.Models.OrderRequest> orderList = new List<Moip.Models.OrderRequest>();
+
+            orderList.Add(orderRequest1);
+            orderList.Add(orderRequest2);
+
+            Moip.Models.MultiorderRequest multiOrderRequest = new Moip.Models.MultiorderRequest
+            {
+                OwnId = "my_own_multi_order_id",
+                Orders = orderList
+            };
+            
+
+            return multiOrderRequest;
+        }
+
+
+
+
     }
 }

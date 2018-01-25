@@ -48,6 +48,14 @@ namespace Moip
             }
         }
 
+        public MultiOrdersController MultiOrders
+        {
+            get
+            {
+                return MultiOrdersController.Instance;
+            }
+        }
+
         public AccountsController Accounts
         {
             get
