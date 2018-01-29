@@ -5,8 +5,10 @@ using Moip.Utilities;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -351,7 +353,7 @@ namespace Moip.Tests.Helpers
 
             var _headers = new Dictionary<string, string>()
             {
-                { "user-agent", "Moip.NETSDK" },
+                { "user-agent", string.Format("MoipDotnetSDK/{0} (+https://github.com/moip/moip-sdk-dotnet)", Moip.Utilities.APIHelper.GetVersion()) },
                 { "accept", "application/json" },
                 { "content-type", "application/json; charset=utf-8" }
             };

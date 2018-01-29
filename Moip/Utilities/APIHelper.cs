@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -373,10 +374,12 @@ namespace Moip.Utilities
         public static Dictionary<string, string> GetHeader()
         {
             var _headers = new Dictionary<string, string>();
-            _headers.Add("user-agent", "Moip.NETSDK");
+            _headers.Add("user-agent", string.Format("MoipDotnetSDK/{0} (+https://github.com/moip/moip-sdk-dotnet)", GetVersion()));
             _headers.Add("accept", "application/json");
             _headers.Add("Authorization", string.Format("Bearer {0}", Configuration.OAuthAccessToken));
             _headers.Add("content-type", "application/json; charset=utf-8");
+
+            
 
             return _headers;
         }
@@ -404,6 +407,11 @@ namespace Moip.Utilities
 
             return APIHelper.CleanUrl(_queryBuilder);
 
+        }
+
+        public static string GetVersion()
+        {
+            return FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         }
     }
 }

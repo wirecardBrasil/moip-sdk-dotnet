@@ -5,6 +5,8 @@ using Moip;
 using Moip.Tests.Helpers;
 using NUnit.Framework;
 using System;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace Moip.Tests
 {
@@ -16,7 +18,7 @@ namespace Moip.Tests
         {
             Dictionary<string, string> expectedPostHeader = new Dictionary<string, string>()
             {
-                { "user-agent", "Moip.NETSDK" },
+                { "user-agent", string.Format("MoipDotnetSDK/{0} (+https://github.com/moip/moip-sdk-dotnet)", Moip.Utilities.APIHelper.GetVersion()) },
                 { "accept", "application/json" },
                 { "Authorization", "Bearer " + "d6bc80acbce6409b8b4cad5ceee62bc0_v2" },
                 { "content-type", "application/json; charset=utf-8" }
