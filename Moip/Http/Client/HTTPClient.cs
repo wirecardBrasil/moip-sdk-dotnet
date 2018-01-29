@@ -143,6 +143,13 @@ namespace Moip.Http.Client
             return new HttpRequest(HttpMethod.Post, queryUrl, headers, body, username, password);
         }
 
+        public HttpRequest PostFormUrl(string queryUrl, Dictionary<string, string> headers,
+            string formParameters, string username = null, string password = null)
+        {
+            List<KeyValuePair<string, Object>> formParametersList = ConvertJsonIntoFormParameters(formParameters);
+            return new HttpRequest(HttpMethod.Post, queryUrl, headers, formParametersList, username, password);
+        }
+
         public HttpRequest Put(string queryUrl, Dictionary<string, string> headers, List<KeyValuePair<string, object>> formParameters, string username = null,
             string password = null)
         {
@@ -252,10 +259,28 @@ namespace Moip.Http.Client
                     {
                         parameters.Add(new KeyValuePair<string, string>(param.Key, param.Value.ToString()));
                     }
+
                     requestMessage.Content = new FormUrlEncodedContent(parameters);
                 }
             }
             return await _client.SendAsync(requestMessage).ConfigureAwait(false);
+        }
+
+        public static List<KeyValuePair<string, Object>> ConvertJsonIntoFormParameters(string json)
+        {
+            Dictionary<string, string> dict = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+
+            List<KeyValuePair<string, Object>> formParameter = new List<KeyValuePair<string, Object>>();
+
+            foreach (KeyValuePair<string, string> entry in dict)
+            {
+                KeyValuePair<string, Object> properties = new KeyValuePair<string, Object>(entry.Key,
+                    entry.Value);
+
+                formParameter.Add(properties);
+            }
+
+            return formParameter;
         }
 
         #endregion

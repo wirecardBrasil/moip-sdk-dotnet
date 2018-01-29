@@ -893,17 +893,42 @@ TODO
 ## OAuth (Moip Connect)
 ### Solicitar permissões de acesso ao usuário
 ```C#
-TODO
+string authURL = controller.GetAuthorizeUrl("APP-XT5FIAK2F8I7",
+    "http://localhost/moip/callback.php",
+    new ScopePermissionList(
+        ScopePermission.DEFINE_PREFERENCES,
+        ScopePermission.MANAGE_ACCOUNT_INFO,
+        ScopePermission.RECEIVE_FUNDS,
+        ScopePermission.REFUND,
+        ScopePermission.RETRIEVE_FINANCIAL_INFO,
+        ScopePermission.TRANSFER_FUNDS
+    )
+);
 ```
 
 ### Gerar token OAuth
 ```C#
-TODO
+ConnectRequest connectRequest = new ConnectRequest
+{
+    ClientId = "APP-XT5FIAK2F8I7",
+    ClientSecret = "e2bd3951b87e469eb0f2c2b781a753d5",
+    Code = "8870af1372ada7a18fdff4fa4ca1a60f4d542272",
+    RedirectUri = "https://www.google.com.br",
+    GrantType = GrantType.AUTHORIZATION_CODE
+};
+
+ConnectResponse connectResponse = client.connect.Authorize(connectRequest);
 ```
 
 ### Atualizar token OAuth
 ```C#
-TODO
+ConnectRequest connectRequest = new ConnectRequest
+{
+    RefreshToken = "80ca5fb244674117be068d2535ecbe2f_v2",
+    GrantType = GrantType.REFRESH_TOKEN
+};
+
+ConnectResponse connectResponse = client.connect.Authorize(connectRequest);
 ```
 
 ## Tratamento de Exceções

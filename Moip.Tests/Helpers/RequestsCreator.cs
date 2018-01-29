@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Moip.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,22 +9,22 @@ namespace Moip.Tests.Helpers
 {
     class RequestsCreator
     {
-        public static Moip.Models.OrderRequest createOrderRequest()
+        public static OrderRequest createOrderRequest()
         {
-            Moip.Models.TaxDocument taxDocument = new Moip.Models.TaxDocument
+            TaxDocument taxDocument = new TaxDocument
             {
                 Type = "CPF",
                 Number = "22222222222"
             };
 
-            Moip.Models.Phone phone = new Moip.Models.Phone
+            Phone phone = new Phone
             {
                 CountryCode = "55",
                 AreaCode = "11",
                 Number = "66778899"
             };
 
-            Moip.Models.ShippingAddress shippingAddress = new Moip.Models.ShippingAddress
+            ShippingAddress shippingAddress = new ShippingAddress
             {
                 Street = "Rua test",
                 StreetNumber = "123",
@@ -35,7 +36,7 @@ namespace Moip.Tests.Helpers
                 ZipCode = "01234000"
             };
 
-            Moip.Models.CustomerRequest customerRequest = new Moip.Models.CustomerRequest
+            CustomerRequest customerRequest = new CustomerRequest
             {
                 Fullname = "Fulano de Tal",
                 OwnId = "OFulanoDeTal",
@@ -60,7 +61,7 @@ namespace Moip.Tests.Helpers
                 Subtotals = subtotalsRequest
             };
 
-            Moip.Models.Item itemsRequest = new Moip.Models.Item
+            Item itemsRequest = new Item
             {
                 Product = "Bicicleta Specialized Tarmac 26 Shimano Alivio",
                 Quantity = 1,
@@ -68,12 +69,12 @@ namespace Moip.Tests.Helpers
                 Price = 2000
             };
 
-            List<Moip.Models.Item> itemsRequestList = new List<Moip.Models.Item>
+            List<Item> itemsRequestList = new List<Item>
             {
                 itemsRequest
             };
 
-            Moip.Models.OrderRequest orderRequest = new Moip.Models.OrderRequest
+            OrderRequest orderRequest = new OrderRequest
             {
                 OwnId = "my_own_id",
                 Amount = amountRequest,
@@ -84,22 +85,22 @@ namespace Moip.Tests.Helpers
             return orderRequest;
         }
 
-        public static Moip.Models.OrderRequest createOrderWithReceiversRequest()
+        public static OrderRequest createOrderWithReceiversRequest()
         {
-            Moip.Models.TaxDocument taxDocument = new Moip.Models.TaxDocument
+            TaxDocument taxDocument = new TaxDocument
             {
                 Type = "CPF",
                 Number = "22222222222"
             };
 
-            Moip.Models.Phone phone = new Moip.Models.Phone
+            Phone phone = new Phone
             {
                 CountryCode = "55",
                 AreaCode = "11",
                 Number = "66778899"
             };
 
-            Moip.Models.ShippingAddress shippingAddress = new Moip.Models.ShippingAddress
+            ShippingAddress shippingAddress = new ShippingAddress
             {
                 Street = "Rua test",
                 StreetNumber = "123",
@@ -111,7 +112,7 @@ namespace Moip.Tests.Helpers
                 ZipCode = "01234000"
             };
 
-            Moip.Models.CustomerRequest customerRequest = new Moip.Models.CustomerRequest
+            CustomerRequest customerRequest = new CustomerRequest
             {
                 Fullname = "Fulano de Tal",
                 OwnId = "OFulanoDeTal",
@@ -122,7 +123,6 @@ namespace Moip.Tests.Helpers
                 TaxDocument = taxDocument
             };
 
-
             Moip.Models.SubtotalsRequest subtotalsRequest = new Moip.Models.SubtotalsRequest
             {
                 Shipping = 1500,
@@ -130,13 +130,13 @@ namespace Moip.Tests.Helpers
                 Discount = 10
             };
 
-            Moip.Models.AmountOrderRequest amountRequest = new Moip.Models.AmountOrderRequest
+            AmountOrderRequest amountRequest = new AmountOrderRequest
             {
                 Currency = "BRL",
                 Subtotals = subtotalsRequest
             };
 
-            Moip.Models.Item itemsRequest = new Moip.Models.Item
+            Item itemsRequest = new Item
             {
                 Product = "Bicicleta Specialized Tarmac 26 Shimano Alivio",
                 Quantity = 1,
@@ -144,52 +144,52 @@ namespace Moip.Tests.Helpers
                 Price = 2000
             };
 
-            List<Moip.Models.Item> itemsRequestList = new List<Moip.Models.Item>
+            List<Item> itemsRequestList = new List<Item>
             {
                 itemsRequest
             };
 
-            Moip.Models.MoipAccountReceiverRequest moipAccountReceiver1 = new Moip.Models.MoipAccountReceiverRequest
+            MoipAccountReceiverRequest moipAccountReceiver1 = new MoipAccountReceiverRequest
             {
                 Id = "MPA-14AC21F09CAE"
             };
 
-            Moip.Models.AmountReceiverRequest amountReceiver1 = new Moip.Models.AmountReceiverRequest
+            AmountReceiverRequest amountReceiver1 = new AmountReceiverRequest
             {
                 Percentual = 50
             };
 
-            Moip.Models.ReceiverRequest receiver1 = new Moip.Models.ReceiverRequest
+            ReceiverRequest receiver1 = new ReceiverRequest
             {
                 MoipAccount = moipAccountReceiver1,
                 Type = "SECONDARY",
                 Amount = amountReceiver1
             };
 
-            Moip.Models.MoipAccountReceiverRequest moipAccountReceiver2 = new Moip.Models.MoipAccountReceiverRequest
+            MoipAccountReceiverRequest moipAccountReceiver2 = new MoipAccountReceiverRequest
             {
                 Id = "MPA-B0D880F21EF1"
             };
 
-            Moip.Models.AmountReceiverRequest amountReceiver2 = new Moip.Models.AmountReceiverRequest
+            AmountReceiverRequest amountReceiver2 = new AmountReceiverRequest
             {
                 Percentual = 50
             };
 
-            Moip.Models.ReceiverRequest receiver2 = new Moip.Models.ReceiverRequest
+            ReceiverRequest receiver2 = new ReceiverRequest
             {
                 MoipAccount = moipAccountReceiver2,
                 Type = "SECONDARY",
                 Amount = amountReceiver2
             };
 
-            List<Moip.Models.ReceiverRequest> receiverList = new List<Moip.Models.ReceiverRequest>
+            List<ReceiverRequest> receiverList = new List<ReceiverRequest>
             {
                 receiver1,
                 receiver2
             };
 
-            Moip.Models.OrderRequest orderRequest = new Moip.Models.OrderRequest
+            OrderRequest orderRequest = new OrderRequest
             {
                 OwnId = "my_own_id",
                 Amount = amountRequest,
@@ -201,23 +201,23 @@ namespace Moip.Tests.Helpers
             return orderRequest;
         }
 
-        public static Moip.Models.PaymentRequest CreatePaymentWithCCRequest()
+        public static PaymentRequest CreatePaymentWithCCRequest()
         {
 
-            Moip.Models.TaxDocument taxDocumentRequest = new Moip.Models.TaxDocument
+            TaxDocument taxDocumentRequest = new TaxDocument
             {
                 Type = "CPF",
                 Number = "33333333333"
             };
 
-            Moip.Models.Phone phoneRequest = new Moip.Models.Phone
+            Phone phoneRequest = new Phone
             {
                 CountryCode = "55",
                 AreaCode = "11",
                 Number = "66778899"
             };
 
-            Moip.Models.HolderRequest holderRequest = new Moip.Models.HolderRequest
+            HolderRequest holderRequest = new HolderRequest
             {
                 Fullname = "Jose Goku da Silva",
                 Birthdate = "1988-12-30",
@@ -225,7 +225,7 @@ namespace Moip.Tests.Helpers
                 Phone = phoneRequest
             };
 
-            Moip.Models.CreditCardRequest creditCardRequest = new Moip.Models.CreditCardRequest
+            CreditCardRequest creditCardRequest = new CreditCardRequest
             {
                 ExpirationMonth = "02",
                 ExpirationYear = "20",
@@ -234,13 +234,13 @@ namespace Moip.Tests.Helpers
                 Holder = holderRequest
             };
 
-            Moip.Models.FundingInstrumentRequest fundingInstrumentRequest = new Moip.Models.FundingInstrumentRequest
+            FundingInstrumentRequest fundingInstrumentRequest = new FundingInstrumentRequest
             {
                 Method = "CREDIT_CARD",
                 CreditCard = creditCardRequest
             };
 
-            Moip.Models.PaymentRequest paymentRequest = new Moip.Models.PaymentRequest
+            PaymentRequest paymentRequest = new PaymentRequest
             {
                 InstallmentCount = 1,
                 StatementDescriptor = "MyStore",
@@ -251,23 +251,23 @@ namespace Moip.Tests.Helpers
 
         }
 
-        public static Moip.Models.PaymentRequest CreatePaymentWithPreAuthorizationRequest()
+        public static PaymentRequest CreatePaymentWithPreAuthorizationRequest()
         {
 
-            Moip.Models.TaxDocument taxDocumentRequest = new Moip.Models.TaxDocument
+            TaxDocument taxDocumentRequest = new TaxDocument
             {
                 Type = "CPF",
                 Number = "33333333333"
             };
 
-            Moip.Models.Phone phoneRequest = new Moip.Models.Phone
+            Phone phoneRequest = new Phone
             {
                 CountryCode = "55",
                 AreaCode = "11",
                 Number = "66778899"
             };
 
-            Moip.Models.HolderRequest holderRequest = new Moip.Models.HolderRequest
+            HolderRequest holderRequest = new HolderRequest
             {
                 Fullname = "Jose Goku da Silva",
                 Birthdate = "1988-12-30",
@@ -275,7 +275,7 @@ namespace Moip.Tests.Helpers
                 Phone = phoneRequest
             };
 
-            Moip.Models.CreditCardRequest creditCardRequest = new Moip.Models.CreditCardRequest
+            CreditCardRequest creditCardRequest = new CreditCardRequest
             {
                 ExpirationMonth = "02",
                 ExpirationYear = "20",
@@ -284,13 +284,13 @@ namespace Moip.Tests.Helpers
                 Holder = holderRequest
             };
 
-            Moip.Models.FundingInstrumentRequest fundingInstrumentRequest = new Moip.Models.FundingInstrumentRequest
+            FundingInstrumentRequest fundingInstrumentRequest = new FundingInstrumentRequest
             {
                 Method = "CREDIT_CARD",
                 CreditCard = creditCardRequest
             };
 
-            Moip.Models.PaymentRequest paymentRequest = new Moip.Models.PaymentRequest
+            PaymentRequest paymentRequest = new PaymentRequest
             {
                 InstallmentCount = 1,
                 StatementDescriptor = "MyStore",
@@ -302,30 +302,30 @@ namespace Moip.Tests.Helpers
 
         }
 
-        public static Moip.Models.PaymentBoletoOrDebitRequest CreatePaymentWithBoletoRequest()
+        public static PaymentBoletoOrDebitRequest CreatePaymentWithBoletoRequest()
         {
 
-            Moip.Models.BoletoInstructionLines boletoInstructionLines = new Moip.Models.BoletoInstructionLines()
+            BoletoInstructionLines boletoInstructionLines = new BoletoInstructionLines()
             {
                 First = "TESTETETSTTTST",
                 Second = "tfcsddlksjsd",
                 Third = "lkshglashiuahgha"
             };
 
-            Moip.Models.BoletoRequest boletoRequest = new Moip.Models.BoletoRequest()
+            BoletoRequest boletoRequest = new BoletoRequest()
             {
                 ExpirationDate = "2020-09-30",
                 InstructionLines = boletoInstructionLines,
                 LogoUri = "http://"
             };
 
-            Moip.Models.FundingInstrumentRequest fundingInstrumentRequest = new Moip.Models.FundingInstrumentRequest
+            FundingInstrumentRequest fundingInstrumentRequest = new FundingInstrumentRequest
             {
                 Method = "BOLETO",
                 Boleto = boletoRequest
             };
 
-            Moip.Models.PaymentBoletoOrDebitRequest paymentRequest = new Moip.Models.PaymentBoletoOrDebitRequest
+            PaymentBoletoOrDebitRequest paymentRequest = new PaymentBoletoOrDebitRequest
             {
                 FundingInstrument = fundingInstrumentRequest
             };
@@ -334,21 +334,21 @@ namespace Moip.Tests.Helpers
 
         }
 
-        public static Moip.Models.PaymentBoletoOrDebitRequest CreatePaymentWithOnlineDebitRequest()
+        public static PaymentBoletoOrDebitRequest CreatePaymentWithOnlineDebitRequest()
         {
-            Moip.Models.OnlineBankDebitRequest onlineBankDebitRequest = new Moip.Models.OnlineBankDebitRequest()
+            OnlineBankDebitRequest onlineBankDebitRequest = new OnlineBankDebitRequest()
             {
                 BankNumber = 341,
                 ExpirationDate = "2020-09-30"
             };
 
-            Moip.Models.FundingInstrumentRequest fundingInstrumentRequest = new Moip.Models.FundingInstrumentRequest
+            FundingInstrumentRequest fundingInstrumentRequest = new FundingInstrumentRequest
             {
                 Method = "ONLINE_BANK_DEBIT",
                 OnlineBankDebit = onlineBankDebitRequest
             };
 
-            Moip.Models.PaymentBoletoOrDebitRequest paymentRequest = new Moip.Models.PaymentBoletoOrDebitRequest
+            PaymentBoletoOrDebitRequest paymentRequest = new PaymentBoletoOrDebitRequest
             {
                 FundingInstrument = fundingInstrumentRequest
             };
@@ -357,14 +357,14 @@ namespace Moip.Tests.Helpers
 
         }
 
-        public static Moip.Models.NotificationPreferenceRequest CreateNotificationRequest()
+        public static NotificationPreferenceRequest CreateNotificationRequest()
         {
             List<string> eventsList = new List<string>();
             eventsList.Add("ORDER.*");
             eventsList.Add("PAYMENT.AUTHORIZED");
             eventsList.Add("PAYMENT.CANCELLED");
 
-            Moip.Models.NotificationPreferenceRequest notificationPreferenceRequest = new Moip.Models.NotificationPreferenceRequest()
+            NotificationPreferenceRequest notificationPreferenceRequest = new NotificationPreferenceRequest()
             {
                 Events = eventsList,
                 Target = "http://requestb.in/1dhjesw1",
@@ -374,23 +374,23 @@ namespace Moip.Tests.Helpers
 
         }
 
-        public static Moip.Models.PaymentRequest CreatePaymentWithEscrowRequest()
+        public static PaymentRequest CreatePaymentWithEscrowRequest()
         {
 
-            Moip.Models.TaxDocument taxDocumentRequest = new Moip.Models.TaxDocument
+            TaxDocument taxDocumentRequest = new TaxDocument
             {
                 Type = "CPF",
                 Number = "33333333333"
             };
 
-            Moip.Models.Phone phoneRequest = new Moip.Models.Phone
+            Phone phoneRequest = new Phone
             {
                 CountryCode = "55",
                 AreaCode = "11",
                 Number = "66778899"
             };
 
-            Moip.Models.HolderRequest holderRequest = new Moip.Models.HolderRequest
+            HolderRequest holderRequest = new HolderRequest
             {
                 Fullname = "Jose Goku da Silva",
                 Birthdate = "1988-12-30",
@@ -398,7 +398,7 @@ namespace Moip.Tests.Helpers
                 Phone = phoneRequest
             };
 
-            Moip.Models.CreditCardRequest creditCardRequest = new Moip.Models.CreditCardRequest
+            CreditCardRequest creditCardRequest = new CreditCardRequest
             {
                 ExpirationMonth = "02",
                 ExpirationYear = "20",
@@ -407,18 +407,18 @@ namespace Moip.Tests.Helpers
                 Holder = holderRequest
             };
 
-            Moip.Models.FundingInstrumentRequest fundingInstrumentRequest = new Moip.Models.FundingInstrumentRequest
+            FundingInstrumentRequest fundingInstrumentRequest = new FundingInstrumentRequest
             {
                 Method = "CREDIT_CARD",
                 CreditCard = creditCardRequest
             };
 
-            Moip.Models.Escrow escrow = new Moip.Models.Escrow
+            Escrow escrow = new Escrow
             {
                 Description = "Escrow test"
             };
 
-            Moip.Models.PaymentRequest paymentRequest = new Moip.Models.PaymentRequest
+            PaymentRequest paymentRequest = new PaymentRequest
             {
                 InstallmentCount = 1,
                 StatementDescriptor = "MyStore",
@@ -430,22 +430,22 @@ namespace Moip.Tests.Helpers
 
         }
 
-        public static Moip.Models.RefundCCRequest CreateFullCCRefundRequest()
+        public static RefundCCRequest CreateFullCCRefundRequest()
         {
-            Moip.Models.Phone phoneRequest = new Moip.Models.Phone
+            Phone phoneRequest = new Phone
             {
                 CountryCode = "55",
                 AreaCode = "11",
                 Number = "66778899"
             };
 
-            Moip.Models.TaxDocument taxDocumentRequest = new Moip.Models.TaxDocument
+            TaxDocument taxDocumentRequest = new TaxDocument
             {
                 Type = "CPF",
                 Number = "33333333333"
             };
 
-            Moip.Models.HolderRequest holderRequest = new Moip.Models.HolderRequest
+            HolderRequest holderRequest = new HolderRequest
             {
                 Fullname = "Jose Goku da Silva",
                 Birthdate = "1988-12-30",
@@ -454,7 +454,7 @@ namespace Moip.Tests.Helpers
 
             };
 
-            Moip.Models.CreditCardRequest creditCardRequest = new Moip.Models.CreditCardRequest
+            CreditCardRequest creditCardRequest = new CreditCardRequest
             {
                 Number = "5555666677778884",
                 ExpirationMonth = "02",
@@ -463,13 +463,13 @@ namespace Moip.Tests.Helpers
                 Holder = holderRequest
             };
 
-            Moip.Models.RefundingInstrumentCCRequest refundingInstrumentRequest = new Moip.Models.RefundingInstrumentCCRequest
+            RefundingInstrumentCCRequest refundingInstrumentRequest = new RefundingInstrumentCCRequest
             {
                 Method = "CREDIT_CARD",
                 CreditCard = creditCardRequest
             };
 
-            Moip.Models.RefundCCRequest refundRequest = new Moip.Models.RefundCCRequest
+            RefundCCRequest refundRequest = new RefundCCRequest
             {
                 RefundingInstrument = refundingInstrumentRequest,
             };
@@ -478,22 +478,22 @@ namespace Moip.Tests.Helpers
 
         }
 
-        public static Moip.Models.RefundCCRequest CreatePartialCCRefundRequest()
+        public static RefundCCRequest CreatePartialCCRefundRequest()
         {
-            Moip.Models.Phone phoneRequest = new Moip.Models.Phone
+            Phone phoneRequest = new Phone
             {
                 CountryCode = "55",
                 AreaCode = "11",
                 Number = "66778899"
             };
 
-            Moip.Models.TaxDocument taxDocumentRequest = new Moip.Models.TaxDocument
+            TaxDocument taxDocumentRequest = new TaxDocument
             {
                 Type = "CPF",
                 Number = "33333333333"
             };
 
-            Moip.Models.HolderRequest holderRequest = new Moip.Models.HolderRequest
+            HolderRequest holderRequest = new HolderRequest
             {
                 Fullname = "Jose Goku da Silva",
                 Birthdate = "1988-12-30",
@@ -502,7 +502,7 @@ namespace Moip.Tests.Helpers
 
             };
 
-            Moip.Models.CreditCardRequest creditCardRequest = new Moip.Models.CreditCardRequest
+            CreditCardRequest creditCardRequest = new CreditCardRequest
             {
                 Number = "5555666677778884",
                 ExpirationMonth = "02",
@@ -511,13 +511,13 @@ namespace Moip.Tests.Helpers
                 Holder = holderRequest
             };
 
-            Moip.Models.RefundingInstrumentCCRequest refundingInstrumentRequest = new Moip.Models.RefundingInstrumentCCRequest
+            RefundingInstrumentCCRequest refundingInstrumentRequest = new RefundingInstrumentCCRequest
             {
                 Method = "CREDIT_CARD",
                 CreditCard = creditCardRequest
             };
 
-            Moip.Models.RefundCCRequest refundRequest = new Moip.Models.RefundCCRequest
+            RefundCCRequest refundRequest = new RefundCCRequest
             {
                 RefundingInstrument = refundingInstrumentRequest,
                 Amount = 100
@@ -527,15 +527,15 @@ namespace Moip.Tests.Helpers
 
         }
 
-        public static Moip.Models.RefundBankAccountRequest CreateFullBankAccountRefundRequest()
+        public static RefundBankAccountRequest CreateFullBankAccountRefundRequest()
         {
-            Moip.Models.TaxDocument taxDocumentRequest = new Moip.Models.TaxDocument
+            TaxDocument taxDocumentRequest = new TaxDocument
             {
                 Type = "CPF",
                 Number = "22222222222"
             };
 
-            Moip.Models.HolderRequest holderRequest = new Moip.Models.HolderRequest
+            HolderRequest holderRequest = new HolderRequest
             {
                 Fullname = "Fulano de Tal",
                 Birthdate = "1990-01-01",
@@ -543,7 +543,7 @@ namespace Moip.Tests.Helpers
 
             };
 
-            Moip.Models.BankAccountRefundingInstrumentRequest bankAccountRefundRequest = new Moip.Models.BankAccountRefundingInstrumentRequest
+            BankAccountRefundingInstrumentRequest bankAccountRefundRequest = new BankAccountRefundingInstrumentRequest
             {
                 BankNumber = "341",
                 AgencyNumber = "4444444",
@@ -554,13 +554,13 @@ namespace Moip.Tests.Helpers
                 Holder = holderRequest
             };
 
-            Moip.Models.RefundingInstrumentBankAccountRequest refundingInstrumentRequest = new Moip.Models.RefundingInstrumentBankAccountRequest
+            RefundingInstrumentBankAccountRequest refundingInstrumentRequest = new RefundingInstrumentBankAccountRequest
             {
                 Method = "BANK_ACCOUNT",
                 BankAccount = bankAccountRefundRequest
             };
 
-            Moip.Models.RefundBankAccountRequest refundRequest = new Moip.Models.RefundBankAccountRequest
+            RefundBankAccountRequest refundRequest = new RefundBankAccountRequest
             {
                 RefundingInstrument = refundingInstrumentRequest,
             };
@@ -569,16 +569,16 @@ namespace Moip.Tests.Helpers
 
         }
 
-        public static Moip.Models.RefundBankAccountRequest CreatePartialBankAccountRefundRequest()
+        public static RefundBankAccountRequest CreatePartialBankAccountRefundRequest()
         {
 
-            Moip.Models.TaxDocument taxDocumentRequest = new Moip.Models.TaxDocument
+            TaxDocument taxDocumentRequest = new TaxDocument
             {
                 Type = "CPF",
                 Number = "22222222222"
             };
 
-            Moip.Models.HolderRequest holderRequest = new Moip.Models.HolderRequest
+            HolderRequest holderRequest = new HolderRequest
             {
                 Fullname = "Fulano de Tal",
                 Birthdate = "1990-01-01",
@@ -586,7 +586,7 @@ namespace Moip.Tests.Helpers
 
             };
 
-            Moip.Models.BankAccountRefundingInstrumentRequest bankAccountRefundRequest = new Moip.Models.BankAccountRefundingInstrumentRequest
+            BankAccountRefundingInstrumentRequest bankAccountRefundRequest = new BankAccountRefundingInstrumentRequest
             {
                 BankNumber = "341",
                 AgencyNumber = "4444444",
@@ -597,13 +597,13 @@ namespace Moip.Tests.Helpers
                 Holder = holderRequest
             };
 
-            Moip.Models.RefundingInstrumentBankAccountRequest refundingInstrumentRequest = new Moip.Models.RefundingInstrumentBankAccountRequest
+            RefundingInstrumentBankAccountRequest refundingInstrumentRequest = new RefundingInstrumentBankAccountRequest
             {
                 Method = "BANK_ACCOUNT",
                 BankAccount = bankAccountRefundRequest
             };
 
-            Moip.Models.RefundBankAccountRequest refundRequest = new Moip.Models.RefundBankAccountRequest
+            RefundBankAccountRequest refundRequest = new RefundBankAccountRequest
             {
                 RefundingInstrument = refundingInstrumentRequest,
                 Amount = 100
@@ -613,9 +613,9 @@ namespace Moip.Tests.Helpers
 
         }
 
-        public static Moip.Models.CustomerRequest CreateCustomerRequest(string date)
+        public static CustomerRequest CreateCustomerRequest(string date)
         {
-            Moip.Models.ShippingAddress shippingAddressRequest = new Moip.Models.ShippingAddress
+            ShippingAddress shippingAddressRequest = new ShippingAddress
             {
                 Street = "Rua test",
                 StreetNumber = "123",
@@ -627,20 +627,20 @@ namespace Moip.Tests.Helpers
                 ZipCode = "01234000"
             };
 
-            Moip.Models.TaxDocument taxDocumentRequest = new Moip.Models.TaxDocument
+            TaxDocument taxDocumentRequest = new TaxDocument
             {
                 Type = "CPF",
                 Number = "33333333333"
             };
 
-            Moip.Models.Phone phoneRequest = new Moip.Models.Phone
+            Phone phoneRequest = new Phone
             {
                 CountryCode = "55",
                 AreaCode = "11",
                 Number = "66778899"
             };
 
-            Moip.Models.CustomerRequest customerRequest = new Moip.Models.CustomerRequest
+            CustomerRequest customerRequest = new CustomerRequest
             {
                 Fullname = "Fulano de Tal",
                 OwnId = "OFulanoDeTal" + date,
@@ -654,9 +654,9 @@ namespace Moip.Tests.Helpers
             return customerRequest;
         }
 
-        public static Moip.Models.CustomerRequest CreateCustomerWithFundingInstrumentRequest(string date)
+        public static CustomerRequest CreateCustomerWithFundingInstrumentRequest(string date)
         {
-            Moip.Models.ShippingAddress shippingAddressRequest = new Moip.Models.ShippingAddress
+            ShippingAddress shippingAddressRequest = new ShippingAddress
             {
                 Street = "Rua test",
                 StreetNumber = "123",
@@ -668,20 +668,20 @@ namespace Moip.Tests.Helpers
                 ZipCode = "01234000"
             };
 
-            Moip.Models.TaxDocument taxDocumentRequest = new Moip.Models.TaxDocument
+            TaxDocument taxDocumentRequest = new TaxDocument
             {
                 Type = "CPF",
                 Number = "33333333333"
             };
 
-            Moip.Models.Phone phoneRequest = new Moip.Models.Phone
+            Phone phoneRequest = new Phone
             {
                 CountryCode = "55",
                 AreaCode = "11",
                 Number = "66778899"
             };
 
-            Moip.Models.HolderRequest holderRequest = new Moip.Models.HolderRequest
+            HolderRequest holderRequest = new HolderRequest
             {
                 Fullname = "Jose Goku da Silva",
                 Birthdate = "1988-12-30",
@@ -689,7 +689,7 @@ namespace Moip.Tests.Helpers
                 Phone = phoneRequest
             };
 
-            Moip.Models.CreditCardRequest creditCardRequest = new Moip.Models.CreditCardRequest
+            CreditCardRequest creditCardRequest = new CreditCardRequest
             {
                 ExpirationMonth = "02",
                 ExpirationYear = "20",
@@ -698,13 +698,13 @@ namespace Moip.Tests.Helpers
                 Holder = holderRequest
             };
 
-            Moip.Models.FundingInstrumentRequest fundingInstrumentRequest = new Moip.Models.FundingInstrumentRequest
+            FundingInstrumentRequest fundingInstrumentRequest = new FundingInstrumentRequest
             {
                 Method = "CREDIT_CARD",
                 CreditCard = creditCardRequest
             };
 
-            Moip.Models.CustomerRequest customerRequest = new Moip.Models.CustomerRequest
+            CustomerRequest customerRequest = new CustomerRequest
             {
                 Fullname = "Fulano de Tal",
                 OwnId = "OFulanoDeTal" + date,
@@ -719,9 +719,9 @@ namespace Moip.Tests.Helpers
             return customerRequest;
         }
 
-        public static Moip.Models.CustomerCreditCardRequest CreateCustomerCreditCardRequest()
+        public static CustomerCreditCardRequest CreateCustomerCreditCardRequest()
         {
-            Moip.Models.ShippingAddress shippingAddressRequest = new Moip.Models.ShippingAddress
+            ShippingAddress shippingAddressRequest = new ShippingAddress
             {
                 Street = "Rua test",
                 StreetNumber = "123",
@@ -733,20 +733,20 @@ namespace Moip.Tests.Helpers
                 ZipCode = "01234000"
             };
 
-            Moip.Models.TaxDocument taxDocumentRequest = new Moip.Models.TaxDocument
+            TaxDocument taxDocumentRequest = new TaxDocument
             {
                 Type = "CPF",
                 Number = "33333333333"
             };
 
-            Moip.Models.Phone phoneRequest = new Moip.Models.Phone
+            Phone phoneRequest = new Phone
             {
                 CountryCode = "55",
                 AreaCode = "11",
                 Number = "66778899"
             };
 
-            Moip.Models.HolderRequest holderRequest = new Moip.Models.HolderRequest
+            HolderRequest holderRequest = new HolderRequest
             {
                 Fullname = "Jose Goku da Silva",
                 Birthdate = "1988-12-30",
@@ -754,7 +754,7 @@ namespace Moip.Tests.Helpers
                 Phone = phoneRequest
             };
 
-            Moip.Models.CreditCardRequest creditCardRequest = new Moip.Models.CreditCardRequest
+            CreditCardRequest creditCardRequest = new CreditCardRequest
             {
                 ExpirationMonth = "02",
                 ExpirationYear = "20",
@@ -763,7 +763,7 @@ namespace Moip.Tests.Helpers
                 Holder = holderRequest
             };
 
-            Moip.Models.CustomerCreditCardRequest customerCreditCardRequest = new Moip.Models.CustomerCreditCardRequest
+            CustomerCreditCardRequest customerCreditCardRequest = new CustomerCreditCardRequest
             {
                 Method = "CREDIT_CARD",
                 CreditCard = creditCardRequest
@@ -771,7 +771,6 @@ namespace Moip.Tests.Helpers
 
             return customerCreditCardRequest;
         }
-
 
         public static Moip.Models.AccountRequest CreateAccountPersonRequest()
         {
@@ -1003,6 +1002,30 @@ namespace Moip.Tests.Helpers
             };
 
             return accountRequest;
+        }
+        public static ConnectRequest CreateConnectRequest()
+        {
+            ConnectRequest connectRequest = new ConnectRequest
+            {
+                ClientId = "APP-XT5FIAK2F8I7",
+                ClientSecret = "e2bd3951b87e469eb0f2c2b781a753d5",
+                Code = "8870af1372ada7a18fdff4fa4ca1a60f4d542272",
+                RedirectUri = "https://www.google.com.br",
+                GrantType = GrantType.AUTHORIZATION_CODE
+            };
+
+            return connectRequest;
+        }
+
+        public static ConnectRequest CreateConnectRefreshRequest()
+        {
+            ConnectRequest connectRequest = new ConnectRequest
+            {
+                RefreshToken = "80ca5fb244674117be068d2535ecbe2f_v2",
+                GrantType = GrantType.REFRESH_TOKEN
+            };
+
+            return connectRequest;
         }
 
     }

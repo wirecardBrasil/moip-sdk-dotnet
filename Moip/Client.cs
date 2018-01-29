@@ -56,7 +56,13 @@ namespace Moip
             }
         }
 
-
+        public ConnectController Connect
+        {
+            get
+            {
+                return ConnectController.Instance;
+            }
+        }
 
         public IHttpClient SharedHttpClient
         {

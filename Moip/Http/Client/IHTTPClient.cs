@@ -40,6 +40,9 @@ namespace Moip.Http.Client
         HttpRequest PostBody(string queryUrl, Dictionary<string, string> headers, object body,
             string username = null, string password = null);
 
+        HttpRequest PostFormUrl(string queryUrl, Dictionary<string, string> headers, 
+            string formParameters, string username = null, string password = null);
+
         HttpRequest Put(string queryUrl, Dictionary<string, string> headers, List<KeyValuePair<string, Object>> formParameters,
             string username = null, string password = null);
 
@@ -59,4 +62,3 @@ namespace Moip.Http.Client
             string username = null, string password = null);
     }
 }
-
