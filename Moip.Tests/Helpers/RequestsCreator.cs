@@ -1101,7 +1101,8 @@ namespace Moip.Tests.Helpers
             {
                 MoipAccount = moipAccountReceiver2,
                 Type = "SECONDARY",
-                Amount = amountReceiver2
+                Amount = amountReceiver2,
+                FeePayor = true
             };
 
             List<Moip.Models.ReceiverRequest> receiverList = new List<Moip.Models.ReceiverRequest>
