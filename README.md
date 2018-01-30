@@ -658,12 +658,156 @@ RefundCCResponse refundResponse = client.Refunds.GetCCRefund("REF-JR4WALM894UJ")
 
 ### Criação
 ```C#
-TODO
+
+TaxDocument taxDocument = new TaxDocument
+{
+    Type = "CPF",
+    Number = "22222222222"
+};
+
+Phone phone = new Phone
+{
+    CountryCode = "55",
+    AreaCode = "11",
+    Number = "66778899"
+};
+
+ShippingAddress shippingAddress = new ShippingAddress
+{
+    Street = "Rua test",
+    StreetNumber = "123",
+    Complement = "Ap test",
+    District = "Bairro test",
+    City = "TestCity",
+    State = "SP",
+    Country = "BRA",
+    ZipCode = "01234000"
+};
+
+CustomerRequest customerRequest = new CustomerRequest
+{
+    Fullname = "Fulano de Tal",
+    OwnId = "OFulanoDeTal",
+    BirthDate = "1990-01-01",
+    Email = "fulano@detal.com.br",
+    Phone = phone,
+    ShippingAddress = shippingAddress,
+    TaxDocument = taxDocument
+};
+
+
+SubtotalsRequest subtotalsRequest = new SubtotalsRequest
+{
+    Shipping = 1500,
+    Addition = 20,
+    Discount = 10
+};
+
+AmountOrderRequest amountRequest = new AmountOrderRequest
+{
+    Currency = "BRL",
+    Subtotals = subtotalsRequest
+};
+
+Item itemsRequest = new Item
+{
+    Product = "Bicicleta Specialized Tarmac 26 Shimano Alivio",
+    Quantity = 1,
+    Detail = "uma linda bicicleta",
+    Price = 2000
+};
+
+List<Item> itemsRequestList = new List<Item>
+{
+    itemsRequest
+};
+
+MoipAccountReceiverRequest moipAccountReceiver1 = new MoipAccountReceiverRequest
+{
+    Id = "MPA-14AC21F09CAE"
+};
+
+AmountReceiverRequest amountReceiver1 = new AmountReceiverRequest
+{
+    Percentual = 50
+};
+
+ReceiverRequest receiver1 = new ReceiverRequest
+{
+    MoipAccount = moipAccountReceiver1,
+    Type = "PRIMARY",
+    Amount = amountReceiver1
+};
+
+MoipAccountReceiverRequest moipAccountReceiver2 = new MoipAccountReceiverRequest
+{
+    Id = "MPA-B0D880F21EF1"
+};
+
+AmountReceiverRequest amountReceiver2 = new AmountReceiverRequest
+{
+    Percentual = 50
+};
+
+ReceiverRequest receiver2 = new ReceiverRequest
+{
+    MoipAccount = moipAccountReceiver2,
+    Type = "SECONDARY",
+    Amount = amountReceiver2
+};
+
+List<ReceiverRequest> receiverList = new List<ReceiverRequest>
+{
+    receiver1,
+    receiver2
+};
+
+OrderRequest orderRequest1 = new OrderRequest
+{
+    OwnId = "my_own_id",
+    Amount = amountRequest,
+    Items = itemsRequestList,
+    Customer = customerRequest,
+    Receivers = receiverList
+};
+
+CustomerRequest customerRequest2 = new CustomerRequest
+{
+    Fullname = "Outro Nome Teste",
+    OwnId = "OFulanoDeTal",
+    BirthDate = "1990-01-01",
+    Email = "fulano@detal.com.br",
+    Phone = phone,
+    ShippingAddress = shippingAddress,
+    TaxDocument = taxDocument
+};
+
+OrderRequest orderRequest2 = new OrderRequest
+{
+    OwnId = "my_own_id2",
+    Amount = amountRequest,
+    Items = itemsRequestList,
+    Customer = customerRequest2,
+    Receivers = receiverList
+};
+
+List<OrderRequest> orderList = new List<OrderRequest>();
+
+orderList.Add(orderRequest1);
+orderList.Add(orderRequest2);
+
+MultiorderRequest multiOrderRequest = new MultiorderRequest
+{
+    OwnId = "meu_multiorder_id",
+    Orders = orderList
+};
+
+MultiorderResponse createdMultiorder = client.Multiorders.CreateMultiorder(multiorderRequest);
 ```
 
 ### Consulta
 ```C#
-TODO
+MultiorderResponse multiorder = client.Multiorders.GetMultiorder("MOR-F2R675E1X97P");
 ```
 
 ## Multipagamentos

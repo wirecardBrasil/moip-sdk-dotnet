@@ -18,6 +18,7 @@ namespace Moip.Models
         private Models.MoipAccountReceiverRequest moipAccount;
         private string type;
         private Models.AmountReceiverRequest amount;
+        private bool feePayor;
 
         [JsonProperty("moipAccount")]
         public Models.MoipAccountReceiverRequest MoipAccount
@@ -58,6 +59,20 @@ namespace Moip.Models
             {
                 this.amount = value;
                 onPropertyChanged("Amount");
+            }
+        }
+
+        [JsonProperty("feePayor")]
+        public bool FeePayor
+        {
+            get
+            {
+                return this.feePayor;
+            }
+            set
+            {
+                this.feePayor = value;
+                onPropertyChanged("FeePayor");
             }
         }
     }

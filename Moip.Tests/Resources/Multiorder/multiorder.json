@@ -1,0 +1,137 @@
+﻿{
+  "ownId": "my_own_multi_order_id",
+  "orders": [
+    {
+      "ownId": "my_own_id",
+      "amount": {
+        "currency": "BRL",
+        "subtotals": {
+          "shipping": 1500,
+          "addition": 20,
+          "discount": 10
+        }
+      },
+      "items": [
+        {
+          "product": "Bicicleta Specialized Tarmac 26 Shimano Alivio",
+          "quantity": 1,
+          "detail": "uma linda bicicleta",
+          "price": 2000
+        }
+      ],
+      "customer": {
+        "ownId": "OFulanoDeTal",
+        "fullname": "Fulano de Tal",
+        "email": "fulano@detal.com.br",
+        "birthDate": "1990-01-01",
+        "taxDocument": {
+          "type": "CPF",
+          "number": "22222222222"
+        },
+        "phone": {
+          "countryCode": "55",
+          "areaCode": "11",
+          "number": "66778899"
+        },
+        "shippingAddress": {
+          "street": "Rua test",
+          "streetNumber": "123",
+          "complement": "Ap test",
+          "district": "Bairro test",
+          "city": "TestCity",
+          "state": "SP",
+          "country": "BRA",
+          "zipCode": "01234000"
+        }
+      },
+      "receivers": [
+        {
+          "moipAccount": {
+            "id": "MPA-14AC21F09CAE"
+          },
+          "type": "PRIMARY",
+          "amount": {
+            "percentual": 50
+          },
+          "feePayor": false
+        },
+        {
+          "moipAccount": {
+            "id": "MPA-B0D880F21EF1"
+          },
+          "type": "SECONDARY",
+          "amount": {
+            "percentual": 50
+          },
+          "feePayor": true
+        }
+      ]
+    },
+    {
+      "ownId": "my_own_id2",
+      "amount": {
+        "currency": "BRL",
+        "subtotals": {
+          "shipping": 1500,
+          "addition": 20,
+          "discount": 10
+        }
+      },
+      "items": [
+        {
+          "product": "Bicicleta Specialized Tarmac 26 Shimano Alivio",
+          "quantity": 1,
+          "detail": "uma linda bicicleta",
+          "price": 2000
+        }
+      ],
+      "customer": {
+        "ownId": "OFulanoDeTal",
+        "fullname": "Outro Nome Teste",
+        "email": "fulano@detal.com.br",
+        "birthDate": "1990-01-01",
+        "taxDocument": {
+          "type": "CPF",
+          "number": "22222222222"
+        },
+        "phone": {
+          "countryCode": "55",
+          "areaCode": "11",
+          "number": "66778899"
+        },
+        "shippingAddress": {
+          "street": "Rua test",
+          "streetNumber": "123",
+          "complement": "Ap test",
+          "district": "Bairro test",
+          "city": "TestCity",
+          "state": "SP",
+          "country": "BRA",
+          "zipCode": "01234000"
+        }
+      },
+      "receivers": [
+        {
+          "moipAccount": {
+            "id": "MPA-14AC21F09CAE"
+          },
+          "type": "PRIMARY",
+          "amount": {
+            "percentual": 50
+          },
+          "feePayor": false
+        },
+        {
+          "moipAccount": {
+            "id": "MPA-B0D880F21EF1"
+          },
+          "type": "SECONDARY",
+          "amount": {
+            "percentual": 50
+          },
+          "feePayor": true
+        }
+      ]
+    }
+  ]
+}
