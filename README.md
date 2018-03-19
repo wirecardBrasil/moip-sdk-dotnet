@@ -73,6 +73,7 @@
 - [Tratamento de Exceções](#tratamento-de-exceções)
 - [Documentação](#documentação)
 - [Licença](#licença)
+- [Comunidade Slack](#comunidade-slack-) [![Slack](https://user-images.githubusercontent.com/4432322/37355972-ba0e9f32-26c3-11e8-93d3-39917eb24109.png)](https://slackin-cqtchmfquq.now.sh)
 
 ## Instalação
 
@@ -1066,3 +1067,7 @@ TODO
 ## Licença
 
 [The MIT License](https://github.com/moip/moip-sdk-dotnet/blob/master/LICENSE)
+
+## Comunidade Slack [![Slack](https://user-images.githubusercontent.com/4432322/37355972-ba0e9f32-26c3-11e8-93d3-39917eb24109.png)](https://slackin-cqtchmfquq.now.sh)
+
+Tem dúvidas? Fale com a gente no [Slack](https://slackin-cqtchmfquq.now.sh/)! 
