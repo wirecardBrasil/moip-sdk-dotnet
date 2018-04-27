@@ -56,6 +56,14 @@ namespace Moip
             }
         }
 
+        public MultipaymentsController Multipayments
+        {
+            get
+            {
+                return MultipaymentsController.Instance;
+            }
+        }
+
         public AccountsController Accounts
         {
             get
