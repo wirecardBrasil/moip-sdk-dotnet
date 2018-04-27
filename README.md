@@ -1,4 +1,4 @@
-<img src="https://gist.githubusercontent.com/joaolucasl/00f53024cecf16410d5c3212aae92c17/raw/1789a2131ee389aeb44e3a9d5333f59cfeebc089/moip-icon.png" align="right" />
+﻿<img src="https://gist.githubusercontent.com/joaolucasl/00f53024cecf16410d5c3212aae92c17/raw/1789a2131ee389aeb44e3a9d5333f59cfeebc089/moip-icon.png" align="right" />
 
 # Moip v2 .NET SDK
 > O jeito mais simples e rápido de integrar o Moip a sua aplicação .NET
@@ -43,6 +43,7 @@
     - [Criação](#criação-5)
       - [Cartão de Crédito](#cartão-de-crédito-1)
       - [Boleto Bancário](#boleto-bancário)
+      - [Débito Online](#débito-online)
     - [Consulta](#consulta-6)
     - [Capturar multipagamento pré-autorizado](#capturar-multipagamento-pré-autorizado)
     - [Cancelar multipagamento pré-autorizado](#cancelar-multipagamento-pré-autorizado)
@@ -816,12 +817,76 @@ MultiorderResponse multiorder = client.Multiorders.GetMultiorder("MOR-F2R675E1X9
 ### Criação
 #### Cartão de Crédito
 ```C#
-TODO
+Moip.Models.TaxDocument taxDocumentRequest = new Moip.Models.TaxDocument
+{
+    Type = "CPF",
+    Number = "33333333333"
+};
+
+Moip.Models.Phone phoneRequest = new Moip.Models.Phone
+{
+    CountryCode = "55",
+    AreaCode = "11",
+    Number = "66778899"
+};
+
+Moip.Models.HolderRequest holderRequest = new Moip.Models.HolderRequest
+{
+    Fullname = "Jose Goku da Silva",
+    Birthdate = "1988-12-30",
+    TaxDocument = taxDocumentRequest,
+    Phone = phoneRequest
+};
+
+Moip.Models.CreditCardRequest creditCardRequest = new Moip.Models.CreditCardRequest
+{
+    ExpirationMonth = "02",
+    ExpirationYear = "20",
+    Number = "5555666677778884",
+    Cvc = "123",
+    Holder = holderRequest
+};
+
+Moip.Models.FundingInstrumentRequest fundingInstrumentRequest = new Moip.Models.FundingInstrumentRequest
+{
+    Method = "CREDIT_CARD",
+    CreditCard = creditCardRequest
+};
+
+Moip.Models.MultipaymentRequest multipaymentRequest = new Moip.Models.MultipaymentRequest
+{
+    InstallmentCount = 1,
+    StatementDescriptor = "MyStore",
+    FundingInstrument = fundingInstrumentRequest
+};
 ```
 
 #### Boleto Bancário
 ```C#
-TODO
+Moip.Models.BoletoInstructionLines boletoInstructionLines = new Moip.Models.BoletoInstructionLines()
+{
+    First = "TESTETETSTTTST",
+    Second = "tfcsddlksjsd",
+    Third = "lkshglashiuahgha"
+};
+
+Moip.Models.BoletoRequest boletoRequest = new Moip.Models.BoletoRequest()
+{
+    ExpirationDate = "2020-09-30",
+    InstructionLines = boletoInstructionLines,
+    LogoUri = "http://"
+};
+
+Moip.Models.FundingInstrumentRequest fundingInstrumentRequest = new Moip.Models.FundingInstrumentRequest
+{
+    Method = "BOLETO",
+    Boleto = boletoRequest
+};
+
+Moip.Models.MultipaymentBoletoOrDebitRequest multipaymentRequest = new Moip.Models.MultipaymentBoletoOrDebitRequest
+{
+    FundingInstrument = fundingInstrumentRequest
+};
 ```
 
 > Para capturar os links do boleto:
@@ -834,9 +899,29 @@ TODO
 TODO
 ```
 
+#### Débito Online
+```C#
+Moip.Models.OnlineBankDebitRequest onlineBankDebitRequest = new Moip.Models.OnlineBankDebitRequest()
+{
+    BankNumber = 341,
+    ExpirationDate = "2020-09-30"
+};
+
+Moip.Models.FundingInstrumentRequest fundingInstrumentRequest = new Moip.Models.FundingInstrumentRequest
+{
+    Method = "ONLINE_BANK_DEBIT",
+    OnlineBankDebit = onlineBankDebitRequest
+};
+
+Moip.Models.MultipaymentBoletoOrDebitRequest multipaymentRequest = new Moip.Models.MultipaymentBoletoOrDebitRequest
+{
+    FundingInstrument = fundingInstrumentRequest
+};
+```
+
 ### Consulta
 ```C#
-TODO
+MultipaymentResponse multipayment = client.Multipayments.GetMultipayment("MPY-F2R675E1X97P");
 ```
 
 ### Capturar multipagamento pré-autorizado

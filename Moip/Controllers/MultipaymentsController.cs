@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,14 +10,14 @@ using Moip.Exceptions;
 
 namespace Moip.Controllers
 {
-    public partial class PaymentsController : BaseController
+    public partial class MultipaymentsController : BaseController
     {
         #region Singleton Pattern
 
         private static object syncObject = new object();
-        private static PaymentsController instance = null;
+        private static MultipaymentsController instance = null;
 
-        internal static PaymentsController Instance
+        internal static MultipaymentsController Instance
         {
             get
             {
@@ -25,7 +25,7 @@ namespace Moip.Controllers
                 {
                     if (null == instance)
                     {
-                        instance = new PaymentsController();
+                        instance = new MultipaymentsController();
                     }
                 }
                 return instance;
@@ -34,16 +34,16 @@ namespace Moip.Controllers
 
         #endregion Singleton Pattern
 
-        public dynamic GetPayment(string paymentId)
+        public dynamic GetMultipayment(string multipaymentId)
         {
-            Task<Models.PaymentResponse> t = GetPaymentAsync(paymentId);
+            Task<Models.MultipaymentResponse> t = GetMultipaymentAsync(multipaymentId);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
-        public async Task<Models.PaymentResponse> GetPaymentAsync(string paymentId)
+        public async Task<Models.MultipaymentResponse> GetMultipaymentAsync(string multipaymentId)
         {
-            string _queryUrl = Utilities.APIHelper.GetBuiltUrl("payment", paymentId);
+            string _queryUrl = Utilities.APIHelper.GetBuiltUrl("multipayment", multipaymentId);
 
             var _headers = Utilities.APIHelper.GetHeader();
 
@@ -56,7 +56,7 @@ namespace Moip.Controllers
 
             try
             {
-                return APIHelper.JsonDeserialize<Models.PaymentResponse>(_response.Body);
+                return APIHelper.JsonDeserialize<Models.MultipaymentResponse>(_response.Body);
             }
             catch (Exception _ex)
             {
@@ -64,24 +64,23 @@ namespace Moip.Controllers
             }
         }
 
-        public Models.PaymentResponse CreateCreditCard(string orderId, Models.PaymentRequest body = null)
+        public Models.MultipaymentResponse CreateCreditCard(string multiorderId, Models.MultipaymentRequest body = null)
         {
-            Task<Models.PaymentResponse> t = CreateCreditCardAsync(orderId, body);
+            Task<Models.MultipaymentResponse> t = CreateCreditCardAsync(multiorderId, body);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
-        public async Task<Models.PaymentResponse> CreateCreditCardAsync(string orderId, Models.PaymentRequest body = null)
+        public async Task<Models.MultipaymentResponse> CreateCreditCardAsync(string multiorderId, Models.MultipaymentRequest body = null)
         {
-
             string _baseUri = Configuration.GetBaseURI();
 
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/orders/{order-id}/payments");
+            _queryBuilder.Append("/multiorders/{multiorder-id}/multipayments");
 
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "order-id", orderId }
+                { "multiorder-id", multiorderId }
             });
 
             string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
@@ -99,7 +98,7 @@ namespace Moip.Controllers
 
             try
             {
-                return APIHelper.JsonDeserialize<Models.PaymentResponse>(_response.Body);
+                return APIHelper.JsonDeserialize<Models.MultipaymentResponse>(_response.Body);
             }
             catch (Exception _ex)
             {
@@ -107,24 +106,23 @@ namespace Moip.Controllers
             }
         }
 
-        public Models.PaymentResponse CreateBoletoOrDebit(string orderId, Models.PaymentBoletoOrDebitRequest body)
+        public Models.MultipaymentResponse CreateBoletoOrDebit(string multiorderId, Models.MultipaymentBoletoOrDebitRequest body)
         {
-            Task<Models.PaymentResponse> t = CreateBoletoOrDebitAsync(body, orderId);
+            Task<Models.MultipaymentResponse> t = CreateBoletoOrDebitAsync(body, multiorderId);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
-        public async Task<Models.PaymentResponse> CreateBoletoOrDebitAsync(Models.PaymentBoletoOrDebitRequest body, string orderId)
+        public async Task<Models.MultipaymentResponse> CreateBoletoOrDebitAsync(Models.MultipaymentBoletoOrDebitRequest body, string multiorderId)
         {
-
             string _baseUri = Configuration.GetBaseURI();
 
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/orders/{order-id}/payments");
+            _queryBuilder.Append("/multiorders/{multiorder-id}/multipayments");
 
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "order-id", orderId }
+                { "multiorder-id", multiorderId }
             });
 
             string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
@@ -142,32 +140,30 @@ namespace Moip.Controllers
 
             try
             {
-                return APIHelper.JsonDeserialize<Models.PaymentResponse>(_response.Body);
+                return APIHelper.JsonDeserialize<Models.MultipaymentResponse>(_response.Body);
             }
             catch (Exception _ex)
             {
                 throw new APIException("Failed to parse the response: " + _ex.Message, _context);
             }
         }
-
-        public Models.PaymentResponse CapturePreAuthorized(string paymentId)
+        public Models.MultipaymentResponse CapturePreAuthorized(string multipaymentId)
         {
-            Task<Models.PaymentResponse> t = CapturePreAuthorizedAsync(paymentId);
+            Task<Models.MultipaymentResponse> t = CapturePreAuthorizedAsync(multipaymentId);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
-        public async Task<Models.PaymentResponse> CapturePreAuthorizedAsync(string paymentId)
+        public async Task<Models.MultipaymentResponse> CapturePreAuthorizedAsync(string multipaymentId)
         {
-
             string _baseUri = Configuration.GetBaseURI();
 
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/payments/{payment-id}/capture");
+            _queryBuilder.Append("/multiorders/{multiorder-id}/multipayments");
 
             APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
             {
-                { "payment-id", paymentId }
+                { "multipayment-id", multipaymentId }
             });
 
             dynamic body = "";
@@ -187,52 +183,7 @@ namespace Moip.Controllers
 
             try
             {
-                return APIHelper.JsonDeserialize<Models.PaymentResponse>(_response.Body);
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        public Models.PaymentResponse CancelPreAuthorized(string paymentId)
-        {
-            Task<Models.PaymentResponse> t = CancelPreAuthorizedAsync(paymentId);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        public async Task<Models.PaymentResponse> CancelPreAuthorizedAsync(string paymentId)
-        {
-
-            string _baseUri = Configuration.GetBaseURI();
-
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/payments/{payment-id}/void");
-
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "payment-id", paymentId }
-            });
-
-            dynamic body = "";
-
-            var _body = APIHelper.JsonSerialize(body);
-
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            var _headers = Utilities.APIHelper.GetHeader();
-
-            HttpRequest _request = ClientInstance.PostBody(_queryUrl, _headers, _body);
-
-            HttpStringResponse _response = (HttpStringResponse)await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request, _response);
-
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return APIHelper.JsonDeserialize<Models.PaymentResponse>(_response.Body);
+                return APIHelper.JsonDeserialize<Models.MultipaymentResponse>(_response.Body);
             }
             catch (Exception _ex)
             {
@@ -249,7 +200,6 @@ namespace Moip.Controllers
 
         public async Task<Models.EscrowResponse> ReleaseEscrowAsync(string escrowId)
         {
-
             string _baseUri = Configuration.GetBaseURI();
 
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
@@ -284,6 +234,5 @@ namespace Moip.Controllers
                 throw new APIException("Failed to parse the response: " + _ex.Message, _context);
             }
         }
-
     }
 }

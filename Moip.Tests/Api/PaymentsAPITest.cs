@@ -68,9 +68,6 @@ namespace Moip.Tests
             Assert.AreEqual("tfcsddlksjsd", paymentResponse.FundingInstrument.Boleto.InstructionLines.Second, "Should match exactly (string literal match)");
             Assert.AreEqual("lkshglashiuahgha", paymentResponse.FundingInstrument.Boleto.InstructionLines.Third, "Should match exactly (string literal match)");
             Assert.AreEqual("http://", paymentResponse.FundingInstrument.Boleto.LogoUri, "Should match exactly (string literal match)");
-            Assert.AreEqual("https://checkout-sandbox.moip.com.br/boleto/" + paymentResponse.Id + "/print", paymentResponse.Links.PayBoleto.PrintHref, "Should match exactly (string literal match)");
-            Assert.AreEqual("https://checkout-sandbox.moip.com.br/boleto/" + paymentResponse.Id, paymentResponse.Links.PayBoleto.RedirectHref, "Should match exactly (string literal match)");
-
         }
 
         [Test]

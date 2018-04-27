@@ -1155,8 +1155,104 @@ namespace Moip.Tests.Helpers
             return multiOrderRequest;
         }
 
+        public static Moip.Models.MultipaymentRequest CreateMultipaymetWithCCRequest()
+        {
+            Moip.Models.TaxDocument taxDocumentRequest = new Moip.Models.TaxDocument
+            {
+                Type = "CPF",
+                Number = "33333333333"
+            };
 
+            Moip.Models.Phone phoneRequest = new Moip.Models.Phone
+            {
+                CountryCode = "55",
+                AreaCode = "11",
+                Number = "66778899"
+            };
 
+            Moip.Models.HolderRequest holderRequest = new Moip.Models.HolderRequest
+            {
+                Fullname = "Jose Goku da Silva",
+                Birthdate = "1988-12-30",
+                TaxDocument = taxDocumentRequest,
+                Phone = phoneRequest
+            };
 
+            Moip.Models.CreditCardRequest creditCardRequest = new Moip.Models.CreditCardRequest
+            {
+                ExpirationMonth = "02",
+                ExpirationYear = "20",
+                Number = "5555666677778884",
+                Cvc = "123",
+                Holder = holderRequest
+            };
+
+            Moip.Models.FundingInstrumentRequest fundingInstrumentRequest = new Moip.Models.FundingInstrumentRequest
+            {
+                Method = "CREDIT_CARD",
+                CreditCard = creditCardRequest
+            };
+
+            Moip.Models.MultipaymentRequest multipaymentRequest = new Moip.Models.MultipaymentRequest
+            {
+                InstallmentCount = 1,
+                StatementDescriptor = "MyStore",
+                FundingInstrument = fundingInstrumentRequest
+            };
+
+            return multipaymentRequest;
+        }
+
+        public static Moip.Models.MultipaymentBoletoOrDebitRequest CreateMultipaymentWithBoletoRequest()
+        {
+            Moip.Models.BoletoInstructionLines boletoInstructionLines = new Moip.Models.BoletoInstructionLines()
+            {
+                First = "TESTETETSTTTST",
+                Second = "tfcsddlksjsd",
+                Third = "lkshglashiuahgha"
+            };
+
+            Moip.Models.BoletoRequest boletoRequest = new Moip.Models.BoletoRequest()
+            {
+                ExpirationDate = "2020-09-30",
+                InstructionLines = boletoInstructionLines,
+                LogoUri = "http://"
+            };
+
+            Moip.Models.FundingInstrumentRequest fundingInstrumentRequest = new Moip.Models.FundingInstrumentRequest
+            {
+                Method = "BOLETO",
+                Boleto = boletoRequest
+            };
+
+            Moip.Models.MultipaymentBoletoOrDebitRequest multipaymentRequest = new Moip.Models.MultipaymentBoletoOrDebitRequest
+            {
+                FundingInstrument = fundingInstrumentRequest
+            };
+
+            return multipaymentRequest;
+        }
+
+        public static Moip.Models.MultipaymentBoletoOrDebitRequest CreateMultipaymentWithOnlineDebitRequest()
+        {
+            Moip.Models.OnlineBankDebitRequest onlineBankDebitRequest = new Moip.Models.OnlineBankDebitRequest()
+            {
+                BankNumber = 341,
+                ExpirationDate = "2020-09-30"
+            };
+
+            Moip.Models.FundingInstrumentRequest fundingInstrumentRequest = new Moip.Models.FundingInstrumentRequest
+            {
+                Method = "ONLINE_BANK_DEBIT",
+                OnlineBankDebit = onlineBankDebitRequest
+            };
+
+            Moip.Models.MultipaymentBoletoOrDebitRequest multipaymentRequest = new Moip.Models.MultipaymentBoletoOrDebitRequest
+            {
+                FundingInstrument = fundingInstrumentRequest
+            };
+
+            return multipaymentRequest;
+        }
     }
 }
