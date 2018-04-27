@@ -65,5 +65,23 @@ namespace Moip.Tests.Api
             Assert.AreEqual("341", multipaymentResponse.Payments[0].FundingInstrument.OnlineBankDebit.BankNumber, "Should match exactly (string literal match)");
             Assert.AreEqual("2020-09-30", multipaymentResponse.Payments[0].FundingInstrument.OnlineBankDebit.ExpirationDate, "Should match exactly (string literal match)");
         }
+
+        [Test]
+        public void TestGetMultipayment()
+        {
+            Moip.Models.MultipaymentRequest multipaymentRequest = Helpers.RequestsCreator.CreateMultipaymetWithCCRequest();
+
+            string multipaymentId = controller.CreateCreditCard(GetClient().MultiOrders.CreateMultiorder(Helpers.RequestsCreator.CreateMultiorderRequest()).Id, multipaymentRequest).Id;
+
+            Moip.Models.MultipaymentResponse multipaymentResponse = controller.GetMultipayment(multipaymentId);
+
+            Assert.NotNull(multipaymentResponse.Id, "Id should not be null");
+            Assert.AreEqual(1, multipaymentResponse.InstallmentCount, "Should match exactly (string literal match)");
+            Assert.AreEqual("CREDIT_CARD", multipaymentResponse.Payments[0].FundingInstrument.Method, "Should match exactly (string literal match)");
+            Assert.AreEqual("Jose Goku da Silva", multipaymentResponse.Payments[0].FundingInstrument.CreditCard.Holder.Fullname, "Should match exactly (string literal match)");
+            Assert.AreEqual("1988-12-30", multipaymentResponse.Payments[0].FundingInstrument.CreditCard.Holder.Birthdate, "Should match exactly (string literal match)");
+            Assert.AreEqual("CPF", multipaymentResponse.Payments[0].FundingInstrument.CreditCard.Holder.TaxDocument.Type, "Should match exactly (string literal match)");
+            Assert.AreEqual("33333333333", multipaymentResponse.Payments[0].FundingInstrument.CreditCard.Holder.TaxDocument.Number, "Should match exactly (string literal match)");
+        }
     }
 }
