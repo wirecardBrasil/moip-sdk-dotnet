@@ -15,19 +15,33 @@ namespace Moip.Models
     public class AmountReceiverRequest : BaseModel
     {
         // These fields hold the values for the public properties.
-        private int percentual;
+        private int _percentual;
+        private int _fixed;
 
         [JsonProperty("percentual")]
         public int Percentual
         {
             get
             {
-                return this.percentual;
+                return this._percentual;
             }
             set
             {
-                this.percentual = value;
+                this._percentual = value;
                 onPropertyChanged("Percentual");
+            }
+        }
+        [JsonProperty("fixed")]
+        public int Fixed
+        {
+            get
+            {
+                return this._fixed;
+            }
+            set
+            {
+                this._fixed = value;
+                onPropertyChanged("Fixed");
             }
         }
     }
