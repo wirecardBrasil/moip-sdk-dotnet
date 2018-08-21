@@ -257,7 +257,7 @@ PaymentRequest paymentRequest = new PaymentRequest
     FundingInstrument = fundingInstrumentRequest
 };
 
-Payment payment = client.Payments.CreateCreditCard("ORD-HPMZSOM611M2", paymentRequest);
+PaymentResponse paymentResponse = client.Payments.CreateCreditCard("ORD-HPMZSOM611M2", paymentRequest);
 ```
 
 #### Boleto
