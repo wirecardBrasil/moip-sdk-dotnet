@@ -212,49 +212,37 @@ TODO
 ### Criação
 #### Cartão de crédito
 ```C#
-TaxDocument taxDocumentRequest = new TaxDocument
-{
-    Type = "CPF",
-    Number = "33333333333"
-};
-
-Phone phoneRequest = new Phone
-{
-    CountryCode = "55",
-    AreaCode = "11",
-    Number = "66778899"
-};
-
-HolderRequest holderRequest = new HolderRequest
-{
-    Fullname = "Jose Goku da Silva",
-    Birthdate = "1988-12-30",
-    TaxDocument = taxDocumentRequest,
-    Phone = phoneRequest
-};
-
-CreditCardRequest creditCardRequest = new CreditCardRequest
-{
-    ExpirationMonth = "02",
-    ExpirationYear = "20",
-    Number = "5555666677778884",
-    Cvc = "123",
-    Holder = holderRequest
-};
-
-
-FundingInstrumentRequest fundingInstrumentRequest = new FundingInstrumentRequest
-{
-    Method = "CREDIT_CARD",
-    CreditCard = creditCardRequest
-};
-
-
 PaymentRequest paymentRequest = new PaymentRequest
 {
     InstallmentCount = 1,
     StatementDescriptor = "MyStore",
-    FundingInstrument = fundingInstrumentRequest
+    FundingInstrument = new FundingInstrumentRequest
+    {
+        Method = "CREDIT_CARD",
+        CreditCard = new CreditCardRequest
+        {
+            ExpirationMonth = "02",
+            ExpirationYear = "20",
+            Number = "5555666677778884",
+            Cvc = "123",
+            Holder = new HolderRequest
+            {
+                Fullname = "Jose Goku da Silva",
+                Birthdate = "1988-12-30",
+                TaxDocument = new TaxDocument
+                {
+                    Type = "CPF",
+                    Number = "33333333333"
+                },
+                Phone = new Phone
+                {
+                    CountryCode = "55",
+                    AreaCode = "11",
+                    Number = "66778899"
+                }
+            }
+        }
+    }
 };
 
 PaymentResponse paymentResponse = client.Payments.CreateCreditCard("ORD-HPMZSOM611M2", paymentRequest);
